@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+	<style type="text/css">
+
+	</style>
+	<script src="http://fb.me/react-0.12.2.js"></script>
+	<script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+</head>
+<body>
+	<div id="app-container"></div>
+	<script type="text/jsx">
+    var counter = 0;
+    setInterval(function(){counter++;}, 1000);
+	var Timer = React.createClass({
+      getInitialState : function() {
+        return {
+          time: counter
+        }
+      },
+      update : function() {
+        this.setState({
+          time: counter
+        });
+      },
+	  render : function() {
+        setInterval(function(){this.update();}, 1000);
+	    return (
+	      <div>
+	        Time: {this.state.time}
+	      </div>
+	    );
+	  }
+	});
+
+	React.render(
+	  <Timer />,
+	  document.getElementById('app-container')
+	);
+	</script>
+</body>
+</html>
