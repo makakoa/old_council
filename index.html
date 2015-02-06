@@ -9,31 +9,36 @@
 <body>
 	<div id="app-container"></div>
 	<script type="text/jsx">
-    var counter = 0;
-    setInterval(function(){counter++;}, 1000);
 	var Timer = React.createClass({
-      getInitialState : function() {
+      getInitialState: function() {
         return {
-          time: counter
-        }
+          time: 0
+        };
       },
-      update : function() {
+      componentDidMount: function() {
+        this.time = setInterval(this.tick, 50);
+      },
+      componentWillUnmount: function() {
+        clearInterval(this.timer);
+      },
+      tick: function() {
         this.setState({
-          time: counter
+          time: new Date - this.props.start
         });
       },
-	  render : function() {
-        setInterval(function(){this.update();}, 1000);
+	  render: function() {
+        var time = Math.round(this.state.time / 100);
+        var seconds = (time / 10).toFixed(1);
 	    return (
 	      <div>
-	        Time: {this.state.time}
+	        Time: {seconds}
 	      </div>
 	    );
 	  }
 	});
 
 	React.render(
-	  <Timer />,
+	  <Timer start={Date.now()} />,
 	  document.getElementById('app-container')
 	);
 	</script>
