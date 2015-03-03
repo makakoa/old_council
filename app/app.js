@@ -1,1 +1,5 @@
-console.log('this is the entry point');
+'use strict';
+
+var Router = require('./router');
+
+Router.run(document.getElementById('app'));

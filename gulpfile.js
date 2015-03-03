@@ -4,7 +4,7 @@ var gulp = require('gulp');
 var fs = require('fs');
 var jshint = require('gulp-jshint');
 var jsxcs = require('gulp-jsxcs');
-var clean = require('gulp-clean');
+var rimraf = require('gulp-rimraf');
 var webpack = require('gulp-webpack');
 var nodemon = require('gulp-nodemon');
 
@@ -37,7 +37,13 @@ gulp.task('jscs', function() {
 gulp.task('clean', function() {
   return gulp
     .src('build', {read: false})
-    .pipe(clean());
+    .pipe(rimraf());
+});
+
+gulp.task('copy', function() {
+  return gulp
+    .src('app/index.html')
+    .pipe(gulp.dest('build/index.html'));
 });
 
 gulp.task('build:dev', function() {
@@ -50,6 +56,7 @@ gulp.task('build:dev', function() {
 gulp.task('server', function() {
   nodemon({
     script: 'server/server.js',
+    ext: 'js,jsx',
     watch: [
       'server',
       'app'
@@ -57,4 +64,4 @@ gulp.task('server', function() {
   });
 });
 
-gulp.task('default', ['jshint', 'jscs', 'clean', 'build:dev', 'server']);
+gulp.task('default', ['jshint', 'jscs', 'clean', 'copy', 'build:dev', 'server']);

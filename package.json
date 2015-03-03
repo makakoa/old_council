@@ -1,0 +1,36 @@
+{
+  "name": "rhythm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/makakoa/rhythm.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/makakoa/rhythm/issues"
+  },
+  "homepage": "https://github.com/makakoa/rhythm",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-clean": "^0.3.1",
+    "gulp-copy": "0.0.2",
+    "gulp-jshint": "^1.9.2",
+    "gulp-jsxcs": "^0.1.8",
+    "gulp-nodemon": "^1.0.5",
+    "gulp-rimraf": "^0.1.1",
+    "gulp-webpack": "^1.2.0"
+  },
+  "dependencies": {
+    "express": "^4.12.1",
+    "jsx-loader": "^0.12.2",
+    "mcfly": "0.0.10",
+    "react": "^0.12.2",
+    "react-router": "^0.12.4"
+  }
+}
