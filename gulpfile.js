@@ -36,14 +36,14 @@ gulp.task('jscs', function() {
 
 gulp.task('clean', function() {
   return gulp
-    .src('build', {read: false})
+    .src('build/*', {read: false})
     .pipe(rimraf());
 });
 
 gulp.task('copy', function() {
   return gulp
     .src('app/index.html')
-    .pipe(gulp.dest('build/index.html'));
+    .pipe(gulp.dest('build'));
 });
 
 gulp.task('build:dev', function() {
