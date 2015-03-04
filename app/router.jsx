@@ -3,7 +3,9 @@
 var React = require('react');
 var Router = require('react-router');
 // require components here
-//var App = require('./components/app');
+var App = require('./components/app');
+var Home = require('./components/home');
+var NotFound = require('./components/notfound');
 
 //Router setup
 var Route = Router.Route;
@@ -14,10 +16,11 @@ var routes = (
   <Route handler={App} path='/'>
     <DefaultRoute name='app' handler={Home} />
     //add other views here
+    <NotFoundRoute handler={NotFound} />
   </Route>
 );
 
-modules.exports = {
+module.exports = {
   run: function(el) {
     Router.run(routes, function(Handler, state) {
       var params = state.params;
