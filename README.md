@@ -1,2 +1,2 @@
-# rhythm
+# react_app
 react play
