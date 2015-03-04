@@ -18,8 +18,6 @@
   "homepage": "https://github.com/makakoa/rhythm",
   "devDependencies": {
     "gulp": "^3.8.11",
-    "gulp-clean": "^0.3.1",
-    "gulp-copy": "0.0.2",
     "gulp-jshint": "^1.9.2",
     "gulp-jsxcs": "^0.1.8",
     "gulp-nodemon": "^1.0.5",

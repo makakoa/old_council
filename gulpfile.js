@@ -11,7 +11,7 @@ var nodemon = require('gulp-nodemon');
 var buildDevCfg = require('./webpack.dev-config');
 
 var paths = {
-  front: ['app/**/*.{js,jsx}'],
+  front: ['app/**/*.js'], // lint jsx files when can
   back: ['server/**/*.js']
 };
 
