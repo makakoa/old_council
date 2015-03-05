@@ -2,8 +2,7 @@
 
 var React = require('react');
 
-var Router = require('react-router');
-var RouteHandler = Router.RouteHandler;
+var Link = require('./link');;
 
 module.exports = React.createClass({
   displayName: 'Home',
@@ -19,10 +18,10 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div>
-        <p>
-          home rendered
-        </p>
-        <RouteHandler />
+        <h1>Welcome To The Council</h1>
+        <Link to='ask'>Seek Guidance</Link>
+        <br/>
+        <Link to='answer'>Advise</Link>
       </div>
     );
   }

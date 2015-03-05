@@ -56,12 +56,14 @@ gulp.task('build:dev', function() {
 gulp.task('server', function() {
   nodemon({
     script: 'server/server.js',
-    ext: 'js,jsx',
+    ext: 'js jsx html',
     watch: [
       'server',
-      'app'
+      'app',
+      'gulpfile.js'
     ]
-  });
+  })
+    .on('change', ['jshint', 'jscs', 'clean', 'copy', 'build:dev']);
 });
 
 gulp.task('default', ['jshint', 'jscs', 'clean', 'copy', 'build:dev', 'server']);

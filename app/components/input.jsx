@@ -2,7 +2,7 @@
 
 var React = require('react');
 
-module.exports Input = React.createClass({
+module.exports = React.createClass({
   displayName: 'Input',
   propTypes: {},
   mixins: [],
