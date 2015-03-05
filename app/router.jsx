@@ -2,9 +2,12 @@
 
 var React = require('react');
 var Router = require('react-router');
-// require components here
+
+//Import components
 var App = require('./components/app');
 var Home = require('./components/home');
+var Ask = require('./components/ask');
+var Answer = require('./components/answer');
 var NotFound = require('./components/notfound');
 
 //Router setup
@@ -14,8 +17,9 @@ var NotFoundRoute = Router.NotFoundRoute;
 
 var routes = (
   <Route handler={App} path='/'>
-    <DefaultRoute name='app' handler={Home} />
-    //add other views here
+    <DefaultRoute name='home' handler={Home} />
+    <Route name='ask' handler={Ask} />
+    <Route name='answer' handler={Answer} />
     <NotFoundRoute handler={NotFound} />
   </Route>
 );
