@@ -4,6 +4,7 @@ var React = require('react');
 // require actions
 
 var Link = require('./link');
+var AskForm = require('./ask-form');
 
 module.exports = React.createClass({
   displayName: 'Ask',
@@ -20,7 +21,8 @@ module.exports = React.createClass({
     return (
       <div className='question'>
         <h1>Present your situation...</h1>
-        <input placeholder='question' />
+        <AskForm />
+        /*<input placeholder='question' />
         <button>Ask</button><br/>
         <ul>
           <input value='Yes' /><br/>
@@ -28,7 +30,7 @@ module.exports = React.createClass({
           <button>Add option</button>
         </ul>
         <p>**Need forward to waiting page or accounts for results**</p>
-        <br/>
+        <br/>*/
         <Link to='home'>Nevermind</Link>
       </div>
     );
