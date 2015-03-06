@@ -17,10 +17,31 @@ module.exports = React.createClass({
 
   render: function() {
     var styles = {
+      fontFamily: '\'Raleway\', Open sans',
       border: '1px solid',
       borderRadius: '2px',
-      background: 'white',
-      cursor: 'pointer'
+      fontSize: this.props.ws.ww / 50,
+      cursor: 'pointer',
+      margin: '3px',
+
+      modifiers: [
+      {kind: {
+        link: {},
+        danger: {
+          background: '#f74a57',
+          color: '#fff',
+          fontSize: this.props.ws.ww/75
+        },
+        ask: {
+          background: '#8aff8e',
+          fontSize: this.props.ws.ww/25
+        },
+        add: {
+          border: 0,
+          background: 'none'
+        }
+      }}
+      ]
     };
     return (
       <button

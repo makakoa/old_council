@@ -40,7 +40,7 @@ var CouncilStore = Flux.createStore({
       CouncilStore.currentQuestion = {};
     }
   },
-  vote: function(data) {
+  vote: function() {
     CouncilStore.openQuestions.splice(CouncilStore.openQuestions
       .indexOf(CouncilStore.currentQuestion), 1);
     CouncilStore.currentQuestion = {};

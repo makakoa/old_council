@@ -15,7 +15,7 @@ var paths = {
   back: ['server/**/*.js']
 };
 
-//to read in json files
+//to read in json config files
 var _jsonCfg = function(name) {
   var raw = fs.readFileSync(name).toString();
   return JSON.parse(raw.replace(/\/\/.*\n/g, ''));
@@ -63,7 +63,8 @@ gulp.task('server', function() {
       'gulpfile.js'
     ]
   })
-    .on('change', ['jshint', 'jscs', 'clean', 'copy', 'build:dev']);
+    .on('change', ['build']);
 });
 
-gulp.task('default', ['jshint', 'jscs', 'clean', 'copy', 'build:dev', 'server']);
+gulp.task('build', ['jshint', 'jscs', 'clean', 'copy', 'build:dev']);
+gulp.task('default', ['build', 'server']);

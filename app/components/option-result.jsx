@@ -2,13 +2,18 @@
 
 var React = require('react');
 
+var Header = require('./header');
+
 module.exports = React.createClass({
   displayName: 'OptionResult',
 
   render: function() {
     return (
       <div className='Waiting'>
-        <h3>{this.props.option}:{this.props.votes}</h3>
+        <Header
+          ws={this.props.ws}
+          kind={this.props.result}
+          value={this.props.option}/>
       </div>
     );
   }

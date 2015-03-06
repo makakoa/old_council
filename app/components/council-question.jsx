@@ -10,6 +10,7 @@ module.exports = React.createClass({
   buildOptions: function(fields, index) {
     return (
       <Option
+        ws={this.props.ws}
         _id={this.props._id}
         index={index}
         key={index}

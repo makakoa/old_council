@@ -9,6 +9,13 @@ var QuestionStore = Flux.createStore({
     return QuestionStore.storeQuestion;
   },
   getResults: function() {
+    QuestionStore.results.options.sort(function(a, b) {
+      return a.votes - b.votes;
+    });
+    QuestionStore.results.options[0].result = 'won';
+    for (var i = 1; i < QuestionStore.results.options.length; i++) {
+      QuestionStore.results.options[i].result = 'lost';
+    }
     return QuestionStore.results;
   },
   createQuestion: function(data) {

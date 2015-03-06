@@ -6,7 +6,7 @@ var open = {};
 
 //auto populate for dev
 open.suchunique = {
-  start: Date.now() + 100000,
+  start: Date.now() + 60000,
   time: 30000,
   prompt: 'Is this app working?',
   options: [

@@ -1,27 +1,34 @@
 'use strict';
 
 var React = require('react');
+var Radium = require('radium');
 
-var Link = require('./link');;
+var Link = require('./link');
+var Header = require('./header');
 
 module.exports = React.createClass({
   displayName: 'Home',
-  propTypes: {},
-  mixins: [],
-
-  getInitialState: function() {return null;},
-
-  componentWillMount: function() {},
-
-  componentWillUnmount: function() {},
+  mixins: [Radium.StyleResolverMixin],
 
   render: function() {
+    var styles = {
+      paddingTop: this.props.ws.wh/10,
+      textAlign: 'center'
+    };
+
     return (
-      <div>
-        <h1>Welcome To The Council</h1>
-        <Link to='ask'>Seek Guidance</Link>
+      <div className='Home'
+        style={this.buildStyles(styles)}>
+        <Header
+          ws={this.props.ws}
+          value='Welcome To The Council'/>
+        <Link to='ask'
+          value='Seek Guidance'
+          ws={this.props.ws}/>
         <br/>
-        <Link to='council'>Advise</Link>
+        <Link to='council'
+          value='Advise'
+          ws={this.props.ws}/>
       </div>
     );
   }
