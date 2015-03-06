@@ -6,7 +6,7 @@ var open = {};
 
 //auto populate for dev
 open.suchunique = {
-  start: Date.now() + 100000,
+  start: Date.now() + 60000,
   time: 30000,
   prompt: 'Is this app working?',
   options: [
@@ -42,7 +42,7 @@ module.exports = function(io) {
   var checkQuestions = function() {
     if (open == {}) return;
     for (var key in open) {
-      if ((Date.now() - open[key].start) > 30000) {
+      if ((Date.now() - open[key].start) > 3000) {
         report(key);
       }
     }

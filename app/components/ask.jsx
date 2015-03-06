@@ -57,7 +57,7 @@ module.exports = React.createClass({
           _id={this.state._id}
           question={this.state.question}
           options={this.state.options}/>
-        <Link to='waiting'>
+        <Link to='results'>
         <Button
           buttonCallback={this.askQuestion}
           value='Ask'/>
