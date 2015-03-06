@@ -1,10 +1,11 @@
 {
-  "name": "rhythm",
+  "name": "The_Council",
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
-    "start": "gulp"
+    "postinstall": "gulp build",
+    "start": "node server/server.js"
   },
   "repository": {
     "type": "git",
