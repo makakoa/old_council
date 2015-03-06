@@ -31,6 +31,9 @@ var QuestionStore = Flux.createStore({
     QuestionStore.storeQuestion.options.splice(data, 1);
     console.log('Store: delete option ' + data);
   },
+  questionAsked: function() {
+    QuestionStore.results = {};
+  },
   questionAnswered: function(data) {
     QuestionStore.results = data;
   }
@@ -54,6 +57,10 @@ var QuestionStore = Flux.createStore({
       break;
     case 'OPTION_DELETED':
       QuestionStore.deleteOption(payload.data);
+      QuestionStore.emitChange();
+      break;
+    case 'QUESTION_ASKED':
+      QuestionStore.questionAsked(payload.data);
       QuestionStore.emitChange();
       break;
     case 'QUESTION_ANSWERED':

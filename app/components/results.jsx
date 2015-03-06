@@ -28,7 +28,9 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var optionsResults = this.state.options.map(this.buildResults);
+    if (this.state.options != {}) {
+      var optionsResults = this.state.options.map(this.buildResults);
+    }
     return (
       <div className='Results'>
         <h1>The Council has concluded</h1>
