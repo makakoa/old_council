@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <head>
-	<style type="text/css">
-	</style>
-	<script src="http://fb.me/react-0.12.2.js"></script>
-	<script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+  <style type="text/css">
+  </style>
+  <script src="http://fb.me/react-0.12.2.js"></script>
+  <script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
 </head>
 <body>
-	<div id="app-container"></div>
-	<script type="text/jsx">
-	var Timer = React.createClass({
+  <div id="app-container"></div>
+  <script type="text/jsx">
+  var Timer = React.createClass({
       getInitialState: function() {
         return {
           time: 0
@@ -25,21 +25,21 @@
           time: new Date - this.props.start
         });
       },
-	  render: function() {
+    render: function() {
         var time = Math.round(this.state.time / 100);
         var seconds = (time/10).toFixed(1);
-	    return (
-	      <div>
-	        Time: {seconds}
-	      </div>
-	    );
-	  }
-	});
+      return (
+        <div>
+          Time: {seconds}
+        </div>
+      );
+    }
+  });
 
-	React.render(
-	  <Timer start={Date.now()} />,
-	  document.getElementById('app-container')
-	);
-	</script>
+  React.render(
+    <Timer start={Date.now()} />,
+    document.getElementById('app-container')
+  );
+  </script>
 </body>
 </html>

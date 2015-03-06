@@ -7,7 +7,9 @@ var Router = require('react-router');
 var App = require('./components/app');
 var Home = require('./components/home');
 var Ask = require('./components/ask');
-var Answer = require('./components/answer');
+var Waiting = require('./components/waiting');
+var Results = require('./components/results');
+var Council = require('./components/council');
 var NotFound = require('./components/notfound');
 
 //Router setup
@@ -19,7 +21,9 @@ var routes = (
   <Route handler={App} path='/'>
     <DefaultRoute name='home' handler={Home} />
     <Route name='ask' handler={Ask} />
-    <Route name='answer' handler={Answer} />
+    <Route name='waiting' handler={Waiting} />
+    <Route name='results' handler={Results} />
+    <Route name='council' handler={Council} />
     <NotFoundRoute handler={NotFound} />
   </Route>
 );
