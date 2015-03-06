@@ -18,11 +18,12 @@ var getCurrent = function() {
 
 module.exports = React.createClass({
   displayName: 'Council',
-  mixins: [CouncilStore],
+  mixins: [CouncilStore.mixin],
 
   getInitialState: function() {
     CouncilActions.loadQuestions();
     return {
+      _id: '',
       current: {
         prompt: 'Loading...',
         options: []
@@ -32,9 +33,13 @@ module.exports = React.createClass({
   },
 
   storeDidChange: function() {
+    console.log('Updating from store');
+    var list = getQuestions();
+    var single = getCurrent();
+    console.log('View current: ' + JSON.stringify(single));
     this.setState({
-      questions: getQuestions(),
-      current: getCurrent()
+      questions: list,
+      current: single
     });
   },
 
@@ -47,14 +52,28 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var list = this.state.questions.map(this.buildList);
+    var current;
+    var list;
+    if (this.state.questions.length > 0) {
+      console.log('Assembling list: ' + this.state.questions.length);
+      current = this.state.current;
+      list = this.state.questions.map(this.buildList);
+    } else {
+      current = {
+        prompt: 'Waiting on requests...',
+        options: [],
+        _id: ''
+      };
+    }
+    console.log('Current: ' + JSON.stringify(current));
     return (
       <div className='Answerer'>
         <h1>"Council, I seek your guidance..."</h1>
         <CouncilQuestion
-          _id={this.state.current._id}
-          prompt={this.state.current.prompt}
-          options={this.state.current.options}/>
+          _id={current._id}
+          prompt={current.prompt}
+          options={current.options}/>
+          <h3>Other Pressing Issues</h3>
           {list}
         <br/>
         <Link to='home'>Leave Council</Link>

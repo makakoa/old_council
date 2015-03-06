@@ -4,6 +4,7 @@ var Flux = require('../Flux');
 var socket = require('../socket');
 
 socket.on('question:new', function(data) {
+  console.log('socketnew: ' + JSON.stringify(data));
   CouncilActions.receiveQuestion(data);
 });
 
@@ -18,11 +19,14 @@ socket.on('question:results', function(data) {
 var CouncilActions = Flux.createActions({
   loadQuestions: function() {
     socket.emit('load:questions', function(data) {
-      return {
-        actionType: 'LOAD_QUESTIONS',
-        data: data
-      };
+      CouncilActions.loaded(data);
     });
+  },
+  loaded: function(data) {
+    return {
+      actionType: 'LOAD_QUESTIONS',
+      data: data
+    };
   },
   receiveQuestion: function(data) {
     return {
