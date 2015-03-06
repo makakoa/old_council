@@ -37,6 +37,7 @@ var CouncilActions = Flux.createActions({
     };
   },
   vote: function(data) {
+    socket.emit('vote', data);
     return {
       actionType: 'VOTE_MADE',
       data: data
