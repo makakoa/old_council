@@ -13,7 +13,7 @@ var QuestionStore = Flux.createStore({
   },
   createQuestion: function(data) {
     QuestionStore.storeQuestion = data;
-    console.log('Store: create question');
+    console.log('Store: create question ' + data.options);
   },
   updatePrompt: function(data) {
     QuestionStore.storeQuestion.prompt = data.value;
@@ -24,7 +24,7 @@ var QuestionStore = Flux.createStore({
     console.log('Store: create option ' + data);
   },
   updateOption: function(data) {
-    QuestionStore.storeQuestion.options[data.index] = data.value;
+    QuestionStore.storeQuestion.options[data.index].option = data.value;
     console.log('Store: update option ' + data.index + ' as ' + data.value);
   },
   deleteOption: function(data) {

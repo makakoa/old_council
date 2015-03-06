@@ -11,7 +11,7 @@ module.exports = function(io) {
         var coinFlip = Math.floor(Math.random() * open[question].options.length);
         open[question].options[coinFlip].votes++;
       }
-      io.to(question).emit('results', open[question]);
+      io.to(question).emit('question:results', open[question]);
       delete open[question];
     };
 

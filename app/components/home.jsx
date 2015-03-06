@@ -21,7 +21,7 @@ module.exports = React.createClass({
         <h1>Welcome To The Council</h1>
         <Link to='ask'>Seek Guidance</Link>
         <br/>
-        <Link to='answer'>Advise</Link>
+        <Link to='council'>Advise</Link>
       </div>
     );
   }

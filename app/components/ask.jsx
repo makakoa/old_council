@@ -62,7 +62,7 @@ module.exports = React.createClass({
           buttonCallback={this.askQuestion}
           value='Ask'/>
         </Link>
-
+        <br/>
         <Link to='home'>Nevermind</Link>
       </div>
     );

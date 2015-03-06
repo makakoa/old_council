@@ -9,7 +9,7 @@ var Home = require('./components/home');
 var Ask = require('./components/ask');
 var Waiting = require('./components/waiting');
 var Results = require('./components/results');
-var Answer = require('./components/answer');
+var Council = require('./components/council');
 var NotFound = require('./components/notfound');
 
 //Router setup
@@ -23,7 +23,7 @@ var routes = (
     <Route name='ask' handler={Ask} />
     <Route name='waiting' handler={Waiting} />
     <Route name='results' handler={Results} />
-    <Route name='answer' handler={Answer} />
+    <Route name='council' handler={Council} />
     <NotFoundRoute handler={NotFound} />
   </Route>
 );
