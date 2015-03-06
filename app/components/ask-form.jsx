@@ -36,8 +36,6 @@ module.exports = React.createClass({
     );
   },
 
-  ask: function() {},
-
   render: function() {
     var OptionNodes = this.props.options.map(this.buildOptions);
 

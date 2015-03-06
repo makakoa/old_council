@@ -45,8 +45,8 @@ module.exports = React.createClass({
     this.setState(getState());
   },
 
-  questionAsked: function() {
-    QuestionActions.questionAsked();
+  askQuestion: function() {
+    QuestionActions.askQuestion(this.state);
   },
 
   render: function() {
@@ -59,7 +59,7 @@ module.exports = React.createClass({
           options={this.state.options}/>
         <Link to='waiting'>
         <Button
-          buttonCallback={this.questionAsked}
+          buttonCallback={this.askQuestion}
           value='Ask'/>
         </Link>
 

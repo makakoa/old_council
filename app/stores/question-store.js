@@ -8,6 +8,9 @@ var QuestionStore = Flux.createStore({
   getQuestion: function() {
     return QuestionStore.storeQuestion;
   },
+  getResults: function() {
+    return QuestionStore.results;
+  },
   createQuestion: function(data) {
     QuestionStore.storeQuestion = data;
     console.log('Store: create question');

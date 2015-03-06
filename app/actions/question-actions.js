@@ -41,7 +41,7 @@ var QuestionActions = Flux.createActions({
       data: data
     };
   },
-  questionAsked: function(data) {
+  askQuestion: function(data) {
     socket.emit('question:submit', data);
     console.log('Action: question asked');
     return {
@@ -50,6 +50,7 @@ var QuestionActions = Flux.createActions({
     };
   },
   questionAnswered: function(data) {
+    console.log('Action: question answered');
     return {
       actionType: 'QUESTION_ANSWERED',
       data: data

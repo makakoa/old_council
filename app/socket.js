@@ -1,6 +1,6 @@
 'use strict';
 
-var io = require('socket.io');
+var io = require('socket.io-client');
 
 var socket = io.connect();
 

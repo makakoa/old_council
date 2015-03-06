@@ -3,6 +3,7 @@
 var React = require('react');
 
 var Router = require('react-router');
+var Link = require('./link');
 
 module.exports = React.createClass({
   displayName: 'Waiting',
@@ -23,9 +24,11 @@ module.exports = React.createClass({
   },
 
   tick: function() {
-    this.setState({
-      time: new Date - this.state.start
-    });
+    if(this.isMounted()){
+      this.setState({
+        time: new Date - this.state.start
+      });
+    }
   },
 
   storeDidChange: function() {
@@ -49,6 +52,7 @@ module.exports = React.createClass({
       <div className='Waiting'>
         <h3>{header}</h3>
         <p>{status}</p>
+        <Link to='results'>Results</Link>
       </div>
     );
   }
