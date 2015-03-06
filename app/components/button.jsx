@@ -16,11 +16,33 @@ module.exports = React.createClass({
   },
 
   render: function() {
+    var proportion; //modifier won't scale size
+    if (!this.props.proportion) {
+      proportion = 1;
+    } else {
+      proportion = this.props.proportion;
+    }
+
     var styles = {
+      fontFamily: '\'Raleway\', Open sans',
       border: '1px solid',
       borderRadius: '2px',
-      background: 'white',
-      cursor: 'pointer'
+      fontSize: this.props.ws.ww / 50 * proportion,
+      cursor: 'pointer',
+      margin: '3px',
+
+      modifiers: [
+      {kind: {
+        link: {},
+        danger: {
+          background: '#f74a57',
+          color: '#fff'
+        },
+        primary: {
+          background: '#8aff8e'
+        }
+      }}
+      ]
     };
     return (
       <button

@@ -2,6 +2,7 @@
 
 var React = require('react');
 var uuid = require('uuid');
+var Radium = require('radium');
 
 var QuestionStore = require('../stores/question-store');
 var QuestionActions = require('../actions/question-actions');
@@ -9,6 +10,7 @@ var QuestionActions = require('../actions/question-actions');
 var Link = require('./link');
 var AskForm = require('./ask-form');
 var Button = require('./button');
+var Header = require('./header');
 
 var getState = function() {
   return QuestionStore.getQuestion();
@@ -17,7 +19,7 @@ var getState = function() {
 module.exports = React.createClass({
   displayName: 'Ask',
   propTypes: {},
-  mixins: [QuestionStore.mixin],
+  mixins: [QuestionStore.mixin, Radium.StyleResolverMixin],
 
   getInitialState: function() {
     var newQuestion = {
@@ -50,20 +52,35 @@ module.exports = React.createClass({
   },
 
   render: function() {
+    var styles = {
+      display: 'block',
+      paddingLeft: 'auto',
+      paddingRight: 'auto',
+      PaddingTop: '10%'
+    }
     return (
-      <div className='question'>
-        <h1>Present your situation...</h1>
+      <div className='question'
+        style={this.buildStyles(styles)}>
+        <Header
+          value='Present your situation.'
+          ws={this.props.ws}/>
         <AskForm
           _id={this.state._id}
           question={this.state.question}
-          options={this.state.options}/>
-        <Link to='results'>
-        <Button
-          buttonCallback={this.askQuestion}
-          value='Ask'/>
-        </Link>
+          options={this.state.options}
+          ws={this.props.ws}/>
+        <Link
+          to='results'
+          linkCb={this.askQuestion}
+          proportion='2'
+          kind='primary'
+          value='Ask'
+          ws={this.props.ws}/>
         <br/>
-        <Link to='home'>Nevermind</Link>
+        <Link
+          to='home'
+          value='Nevermind'
+          ws={this.props.ws}/>
       </div>
     );
   }

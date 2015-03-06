@@ -8,10 +8,6 @@ module.exports = React.createClass({
   propTypes: {},
   mixins: [Radium.StyleResolverMixin, Radium.BrowserStateMixin],
 
-  getInitialState: function() {return null;},
-
-  componentWillMount: function() {},
-
   handleInputChange: function() {
     this.props.inputCallback({
       _id: this.props._id,
@@ -21,12 +17,10 @@ module.exports = React.createClass({
     });
   },
 
-  componentWillUnmount: function() {},
-
   render: function() {
     var styles = {
-      fontSize: 16,
-      fontFamily: 'Open sans',
+      fontFamily: '\'Raleway\', Open sans',
+      fontSize: this.props.ws.ww / 50,
       margin: '5px',
 
       states: [

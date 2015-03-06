@@ -61,29 +61,34 @@ module.exports = React.createClass({
     var seconds = (time/10).toFixed(1);
     var remaining = (30 - seconds);
     var remaining = Math.max(remaining, 0).toFixed(1);
-    var header = 'Deliberation in progress...';
+
+    var header = '';
     var status = '';
-    if (remaining > 0) {
+    if (remaining > 0 && !this.state.hasOwnProperty('prompt')) {
+      header = 'Deliberation in progress...';
       status = remaining + 's remaining';
     } else {
       header = 'Deliberation has concluded.'
       status = 'Waiting on report...';
     }
 
-    if (!this.state.options) {
-      this.state.options = [];
-    }
+    if (!this.state.options) this.state.options = [];
     var optionsResults = this.state.options.map(this.buildResults);
     if (this.state.hasOwnProperty('prompt')){
       status = '"' + this.state.prompt + '"';
     };
+
     return (
       <div className='Results'>
         <h1>{header}</h1>
         <p>{status}</p>
         {optionsResults}
-        <Link to='ask'>Propose another question</Link>
-        <Link to='home'>Return to The Council</Link>
+        <Link
+          to='ask'
+          value='Propose another question'/>
+        <Link
+          to='home'
+          value='Return to The Council' />
       </div>
     );
   }

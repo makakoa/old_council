@@ -28,6 +28,7 @@ module.exports = React.createClass({
 
     return (
       <Input
+        ws={this.props.ws}
         value={value}
         ref='input'
         placeholder={this.props.placeholder}

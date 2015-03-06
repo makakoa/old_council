@@ -2,26 +2,25 @@
 
 var React = require('react');
 
-var Link = require('./link');;
+var Link = require('./link');
+var Header = require('./header');
 
 module.exports = React.createClass({
   displayName: 'Home',
-  propTypes: {},
-  mixins: [],
-
-  getInitialState: function() {return null;},
-
-  componentWillMount: function() {},
-
-  componentWillUnmount: function() {},
 
   render: function() {
     return (
       <div>
-        <h1>Welcome To The Council</h1>
-        <Link to='ask'>Seek Guidance</Link>
+        <Header
+          ws={this.props.ws}
+          value='Welcome To The Council'/>
+        <Link to='ask'
+          value='Seek Guidance'
+          ws={this.props.ws}/>
         <br/>
-        <Link to='council'>Advise</Link>
+        <Link to='council'
+          value='Advise'
+          ws={this.props.ws}/>
       </div>
     );
   }

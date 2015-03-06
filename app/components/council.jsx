@@ -5,6 +5,7 @@ var CouncilActions = require('../actions/council-actions');
 var CouncilStore = require('../stores/council-store');
 
 var Link = require('./link');
+var Header = require('./header');
 var CouncilList = require('./council-list-question');
 var CouncilQuestion = require('./council-question');
 
@@ -47,6 +48,7 @@ module.exports = React.createClass({
     return (
       <CouncilList
         key={index}
+        index={index}
         prompt={fields.prompt}/>
     );
   },
@@ -68,15 +70,24 @@ module.exports = React.createClass({
     console.log('Current: ' + JSON.stringify(current));
     return (
       <div className='Answerer'>
-        <h1>"Council, I seek your guidance..."</h1>
+        <Header
+          ws={this.props.ws}
+          value='"Council, I seek your guidance..."'/>
         <CouncilQuestion
+          ws={this.props.ws}
           _id={current._id}
           prompt={current.prompt}
           options={current.options}/>
-          <h3>Other Pressing Issues</h3>
+          <Header
+            proportion='0.5'
+            ws={this.props.ws}
+            value='Pressing Issues'/>
           {list}
         <br/>
-        <Link to='home'>Leave Council</Link>
+        <Link
+          ws={this.props.ws}
+          to='home'
+          value='Leave Council' />
       </div>
     );
   }

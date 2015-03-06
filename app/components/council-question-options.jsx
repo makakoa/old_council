@@ -17,6 +17,7 @@ module.exports = React.createClass({
     return (
       <div className='CouncilOptions'>
         <Button
+          ws={this.props.ws}
           value={this.props.value}
           key={this.props.key}
           index={this.props.key}
