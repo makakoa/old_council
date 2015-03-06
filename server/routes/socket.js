@@ -44,7 +44,7 @@ module.exports = function(io) {
   var checkQuestions = function() {
     if (open == {}) return;
     for (var key in open) {
-      if ((Date.now() - open[key].start) > 1000) {
+      if ((Date.now() - open[key].start) > 30000) {
         report(key);
       }
     }
