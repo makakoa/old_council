@@ -4,27 +4,20 @@ var React = require('react');
 
 module.exports = React.createClass({
   displayName: 'Button',
-  propTypes: {},
-  mixins: [],
-
-  getInitialState: function() {return null;},
-
-  componentWillMount: function() {},
 
   handleButtonClick: function() {
-    this.props.buttonCallback(
-      this.props._id,
-      this.props.accessor,
-      this.props.index
-    );
+    this.props.buttonCallback({
+      _id: this.props._id,
+      key: this.props.key,
+      index: this.props.index
+    });
   },
-
-  componentWillUnmount: function() {},
 
   render: function() {
     return (
       <button
         _id={this.props._id}
+        key={this.props.index}
         type='button'
         ref='theButton'
         onClick={this.handleButtonClick}>

@@ -1,3 +1,4 @@
 'use strict';
 
-module.exports = new require('mcfly')();
+var McFly = require('mcfly');
+module.exports = new McFly();

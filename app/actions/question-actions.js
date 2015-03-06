@@ -3,18 +3,58 @@
 'use strict';
 
 var Flux = require('../Flux');
+var socket = require('../socket');
 
-module.exports = Flux.createActions({
-  inputChanged: function(data) {
+socket.on('results', function(data) {
+  QuestionActions.questionAnswered(data);
+});
+
+var QuestionActions = Flux.createActions({
+  createQuestion: function(data) {
     return {
-      actionType: 'INPUT_CHANGED',
+      actionType: 'QUESTION_CREATED',
       data: data
     };
   },
-  inputSubmitted: function(data) {
+  updatePrompt: function(data) {
     return {
-      actiontype: 'INPUT_SUBMITTED',
+      actionType: 'PROMPT_UPDATED',
+      data: data
+    };
+  },
+  createOption: function(data) {
+    return {
+      actionType: 'OPTION_CREATED',
+      data: data
+    };
+  },
+  updateOption: function(data) {
+    return {
+      actionType: 'OPTION_UPDATED',
+      data: data
+    };
+  },
+  deleteOption: function(data) {
+    console.log('Action: delete option');
+    return {
+      actionType: 'OPTION_DELETED',
+      data: data
+    };
+  },
+  questionAsked: function(data) {
+    socket.emit('question:submit', data);
+    console.log('Action: question asked');
+    return {
+      actionType: 'QUESTION_ASKED',
+      data: data
+    };
+  },
+  questionAnswered: function(data) {
+    return {
+      actionType: 'QUESTION_ANSWERED',
       data: data
     };
   }
 });
+
+module.exports = QuestionActions;

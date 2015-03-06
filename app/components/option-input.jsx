@@ -6,7 +6,7 @@ var QuestionActions = require('../actions/question-actions');
 var Input = require('./input');
 
 module.exports = React.createClass({
-  displayName: 'QuestionInput',
+  displayName: 'OptionInput',
 
   getInitialState: function() {
     return {
@@ -16,9 +16,9 @@ module.exports = React.createClass({
 
   handleChange: function() {
     var newValue = this.refs.input.getDOMNode().value;
-
-    QuestionActions.updatePrompt({
+    QuestionActions.updateOption({
       _id: this.props._id,
+      index: this.props.index,
       value: newValue
     });
   },
@@ -30,7 +30,7 @@ module.exports = React.createClass({
       <Input
         value={value}
         ref='input'
-        placeholder='Question'
+        placeholder={this.props.placeholder}
         inputCallback={this.handleChange} />
     );
   }

@@ -28,7 +28,8 @@ module.exports = React.createClass({
         _id={this.props._id}
         type='text'
         ref='inputValue'
-        value={this.props.placeholder}
+        value={this.props.value}
+        placeholder={this.props.placeholder}
         onChange={this.handleInputChange} />
     );
   }
