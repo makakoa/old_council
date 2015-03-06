@@ -30,6 +30,7 @@ module.exports = React.createClass({
       <Input
         ws={this.props.ws}
         value={value}
+        kind='question'
         ref='input'
         placeholder='Question'
         inputCallback={this.handleChange} />

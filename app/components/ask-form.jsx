@@ -27,7 +27,6 @@ module.exports = React.createClass({
           buttonCallback={this.deleteOption}
           index={index}
           kind='danger'
-          proportion='0.75'
           value='X'
           ws={this.props.ws}/>
         <OptionInput
@@ -52,7 +51,8 @@ module.exports = React.createClass({
         {OptionNodes}
         <Button
           buttonCallback={this.addOption}
-          value='Add Option'
+          value='add option'
+          kind='add'
           ws={this.props.ws}/>
       </div>
     )

@@ -54,9 +54,10 @@ module.exports = React.createClass({
   render: function() {
     var styles = {
       display: 'block',
-      paddingLeft: 'auto',
-      paddingRight: 'auto',
-      PaddingTop: '10%'
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      paddingTop: this.props.ws.wh / 10,
+      textAlign: 'center'
     }
     return (
       <div className='question'
@@ -72,8 +73,7 @@ module.exports = React.createClass({
         <Link
           to='results'
           linkCb={this.askQuestion}
-          proportion='2'
-          kind='primary'
+          kind='ask'
           value='Ask'
           ws={this.props.ws}/>
         <br/>

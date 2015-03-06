@@ -29,7 +29,6 @@ var App = React.createClass({
 
   render: function() {
     var styles = {
-      background: '#e0ebe1',
       width: this.state.ww,
       height: this.state.wh
     };

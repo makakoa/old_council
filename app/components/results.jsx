@@ -1,10 +1,13 @@
 'use strict';
 
 var React = require('react');
+var Radium = require('radium');
 var QuestionStore = require('../stores/question-store');
 
 var OptionResult = require('./option-result');
 var Link = require('./link');
+var Header = require('./header');
+var Text = require('./text');
 
 var getResults = function() {
   return QuestionStore.getResults();
@@ -14,7 +17,7 @@ var Link = require('./link');
 
 module.exports = React.createClass({
   displayName: 'Results',
-  mixins: [QuestionStore.mixin],
+  mixins: [QuestionStore.mixin, Radium.StyleResolverMixin],
 
   getInitialState: function() {
     return {
@@ -51,12 +54,18 @@ module.exports = React.createClass({
   buildResults: function(fields, index) {
     return (
       <OptionResult
+        ws={this.props.ws}
         option={fields.option}
-        votes={fields.votes}/>
+        result={fields.result}/>
     );
   },
 
   render: function() {
+    var styles = {
+      textAlign: 'center',
+      paddingTop: this.props.ws.wh/10
+    };
+
     var time = Math.round(this.state.time / 100);
     var seconds = (time/10).toFixed(1);
     var remaining = (30 - seconds);
@@ -79,14 +88,22 @@ module.exports = React.createClass({
     };
 
     return (
-      <div className='Results'>
-        <h1>{header}</h1>
-        <p>{status}</p>
+      <div className='Results'
+        style={this.buildStyles(styles)}>
+        <Header
+          ws={this.props.ws}
+          value={header}/>
+        <Text
+          ws={this.props.ws}
+          fStyle='italic'
+          value={status}/>
         {optionsResults}
         <Link
+          ws={this.props.ws}
           to='ask'
           value='Propose another question'/>
         <Link
+          ws={this.props.ws}
           to='home'
           value='Return to The Council' />
       </div>

@@ -9,7 +9,7 @@ var Button = require('./button');
 module.exports = React.createClass({
   render: function() {
     var linkCb;
-    if (this.props.linkCb) {
+    if (!this.props.linkCb) {
       linkCb = function() {
         console.log('Routing to ' + this.props.to);
       }

@@ -20,7 +20,20 @@ module.exports = React.createClass({
       fontWeight: 'bold',
       margin: 0,
       padding: 0,
-      textAlign: 'center'
+      textAlign: 'center',
+
+      modifiers: [
+      {kind: {
+        won: {
+          fontSize: this.props.ws.ww/30,
+          textDecoration: 'underline'
+        },
+        lost: {
+          fontSize: this.props.ws.ww/40,
+          color: 'gray'
+        }
+      }}
+      ]
     };
 
     return (

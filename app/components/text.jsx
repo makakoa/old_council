@@ -9,7 +9,7 @@ module.exports = React.createClass({
   render: function() {
     var styles = {
       fontFamily: '\'Raleway\', Open sans',
-      fontSize: this.props.ws.ww / 50,
+      fontSize: this.props.ws.ww / 40,
       margin: 0,
       padding: 0,
 

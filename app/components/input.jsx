@@ -28,6 +28,15 @@ module.exports = React.createClass({
         background: 'white',
         boxShadow: '0 0 0 2px #CCCCFF'
       }}
+      ],
+
+      modifiers: [
+      {kind: {
+        question: {
+          width: this.props.ws.ww/3,
+          fontSize: this.props.ws.ww/40
+        }
+      }}
       ]
     }
     return (
