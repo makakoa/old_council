@@ -36,12 +36,13 @@ var CouncilStore = Flux.createStore({
         CouncilStore.openQuestions.splice(index, 1);
       }
     });
-    if (CouncilStore.currentQuestion._id == data._id) {
+    if (CouncilStore.currentQuestion && CouncilStore.currentQuestion._id == data._id) {
       CouncilStore.currentQuestion = {};
     }
   },
   vote: function(data) {
-    CouncilStore.openQuestions.splice(data);
+    CouncilStore.openQuestions.splice(CouncilStore.openQuestions
+      .indexOf(CouncilStore.currentQuestion), 1);
     CouncilStore.currentQuestion = {};
   }
 }, function(payload) {

@@ -15,6 +15,10 @@ open.suchunique = {
       votes: 0
     },
     {
+      option: 'Eh sort of',
+      votes: 0
+    },
+    {
       option: 'No',
       votes: 0
     }
@@ -38,7 +42,7 @@ module.exports = function(io) {
   var checkQuestions = function() {
     if (open == {}) return;
     for (var key in open) {
-      if ((Date.now() - open[key].start) > 5000) {
+      if ((Date.now() - open[key].start) > 30000) {
         report(key);
       }
     }
