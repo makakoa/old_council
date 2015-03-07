@@ -22,9 +22,11 @@ module.exports = React.createClass({
         <Header
           ws={this.props.ws}
           value='Welcome To The Council'/>
+        <br/>
         <Link to='ask'
           value='Seek Guidance'
           ws={this.props.ws}/>
+        <br/>
         <br/>
         <Link to='council'
           value='Advise'
