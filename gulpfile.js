@@ -42,7 +42,7 @@ gulp.task('clean', function() {
 
 gulp.task('copy', function() {
   return gulp
-    .src('app/index.html')
+    .src(['app/index.html', 'app/pop.mp3'])
     .pipe(gulp.dest('build'));
 });
 
