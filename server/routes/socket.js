@@ -31,7 +31,9 @@ module.exports = function(io) {
   var report = function(question) {
       console.log('Socket: reporting question');
       if (open[question].total < 1) {
+        console.log('flipping coin');
         var coinFlip = Math.floor(Math.random() * open[question].options.length);
+        console.log(coinFlip);
         open[question].options[coinFlip].votes++;
       }
       io.to(question).emit('question:results', open[question]);
@@ -63,6 +65,8 @@ module.exports = function(io) {
 
     socket.on('question:submit', function(data) {
       console.log('Socket: question submitted');
+      if (data.options.length < 1) return;
+      if (!data.prompt) data.prompt = '*Silence*...';
       data.start = Date.now();
       io.to('council').emit('question:new', data);
       socket.join(data._id);

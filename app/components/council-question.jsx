@@ -3,6 +3,7 @@
 var React = require('react');
 
 var Option = require('./council-question-options');
+var Text = require('./text');
 
 module.exports = React.createClass({
   displayName: 'CouncilQuestion',
@@ -24,7 +25,9 @@ module.exports = React.createClass({
     }
     return (
       <div className='CouncilQuestion'>
-        <p>"{this.props.prompt}"</p>
+        <Text
+          value={this.props.prompt}
+          ws={this.props.ws}/>
         {options}
       </div>
     );
