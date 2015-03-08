@@ -20,7 +20,6 @@ module.exports = React.createClass({
       fontWeight: 'bold',
       margin: 0,
       padding: 0,
-      textAlign: 'center',
 
       modifiers: [
       {kind: {

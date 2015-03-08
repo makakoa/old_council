@@ -3,10 +3,11 @@
 var userCount = 0;
 var councilSize = 0;
 var open = {};
+var recent = [{}, {}, {}, {}, {}];
 
 //auto populate for dev
 open.suchunique = {
-  start: Date.now() + 60000,
+  start: Date.now() - 27000,
   time: 30000,
   prompt: 'Is this app working?',
   options: [
@@ -36,8 +37,21 @@ module.exports = function(io) {
         console.log(coinFlip);
         open[question].options[coinFlip].votes++;
       }
+
+      //reformat to result
+      open[question].options = open[question].options.sort(function(a, b) {
+        return b.votes - a.votes;
+      });
+      open[question].options[0].result = 'won';
+      for (var i = 1; i < open[question].options.length; i++) {
+        open[question].options[i].result = 'lost';
+      }
+
       io.to(question).emit('question:results', open[question]);
       io.to('council').emit('question:ended', open[question]);
+      recent.unshift(open[question]);
+      recent.pop();
+      io.emit('update:recent', recent);
       delete open[question];
     };
 
@@ -54,8 +68,9 @@ module.exports = function(io) {
 
   var Socket = function(socket) {
     userCount++;
+    io.to(socket.id).emit('recent', recent);
     io.emit('online', userCount);
-    console.log('Socket: connect');
+    console.log('Socket: connect ' + userCount);
 
     socket.on('disconnect', function() {
       console.log('Socket: disconnect');
@@ -78,21 +93,17 @@ module.exports = function(io) {
       open[data._id] = data;
     });
 
-    socket.on('join:council', function() {
+    socket.on('load:questions', function(cb) {
+      console.log('Socket: council member joined');
+      socket.join('council');
+      councilSize++;
+      cb(open);
     });
 
     socket.on('leave:council', function() {
       console.log('Socket: council member left');
-      socket.join('council');
+      socket.leave('council');
       councilSize--;
-    });
-
-    socket.on('load:questions', function(cb) {
-      console.log('Socket: council member joined');
-      console.log('Questions sent ' + JSON.stringify(open));
-      socket.join('council');
-      councilSize++;
-      cb(open);
     });
 
     socket.on('vote', function(data) {

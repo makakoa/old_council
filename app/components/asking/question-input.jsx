@@ -1,12 +1,12 @@
 'use strict';
 
 var React = require('react');
-var QuestionActions = require('../actions/question-actions');
+var QuestionActions = require('../../actions/question-actions');
 
-var Input = require('./input');
+var Input = require('../input');
 
 module.exports = React.createClass({
-  displayName: 'OptionInput',
+  displayName: 'QuestionInput',
 
   getInitialState: function() {
     return {
@@ -16,9 +16,9 @@ module.exports = React.createClass({
 
   handleChange: function() {
     var newValue = this.refs.input.getDOMNode().value;
-    QuestionActions.updateOption({
+
+    QuestionActions.updatePrompt({
       _id: this.props._id,
-      index: this.props.index,
       value: newValue
     });
   },
@@ -30,8 +30,9 @@ module.exports = React.createClass({
       <Input
         ws={this.props.ws}
         value={value}
+        kind='question'
         ref='input'
-        placeholder={this.props.placeholder}
+        placeholder='Question'
         inputCallback={this.handleChange} />
     );
   }

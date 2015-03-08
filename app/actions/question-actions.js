@@ -1,4 +1,4 @@
-//flux actions using mcfly, general names currently TODO: change
+//actions for questions to be asked
 
 'use strict';
 

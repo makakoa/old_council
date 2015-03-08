@@ -2,13 +2,14 @@
 
 var React = require('react');
 var Radium = require('radium');
-var CouncilActions = require('../actions/council-actions');
-var CouncilStore = require('../stores/council-store');
+var CouncilActions = require('../../actions/council-actions');
+var CouncilStore = require('../../stores/council-store');
 
-var Link = require('./link');
-var Header = require('./header');
+var Link = require('../link');
+var Header = require('../header');
 var CouncilList = require('./council-list-question');
 var CouncilQuestion = require('./council-question');
+var Recent = require('../recent');
 
 var getQuestions = function() {
   return CouncilStore.getQuestions();
@@ -74,7 +75,10 @@ module.exports = React.createClass({
         _id: ''
       };
     }
-    console.log('Current: ' + JSON.stringify(current));
+    var modWs = {
+      ww: this.props.ws.ww *0.7,
+      wh: this.props.wh
+    };
     return (
       <div className='Council'
         style={this.buildStyles(styles)}>
@@ -91,6 +95,9 @@ module.exports = React.createClass({
             ws={this.props.ws}
             value='Agenda'/>
           {list}
+        <br/>
+        <Recent
+          ws={modWs}/>
         <br/>
         <Link
           ws={this.props.ws}

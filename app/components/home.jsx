@@ -3,18 +3,43 @@
 var React = require('react');
 var Radium = require('radium');
 
+var SocketStore = require('../stores/socket-store');
+
 var Link = require('./link');
 var Header = require('./header');
+var Text = require('./text');
+var Recent = require('./recent');
+
+var getOnline = function() {
+  return SocketStore.getOnline();
+};
 
 module.exports = React.createClass({
   displayName: 'Home',
-  mixins: [Radium.StyleResolverMixin],
+  mixins: [Radium.StyleResolverMixin, SocketStore.mixin],
+
+  getInitialState: function() {
+    return {
+      online: getOnline()
+    };
+  },
+
+  storeDidChange: function() {
+    this.setState({
+      online: getOnline()
+    });
+  },
 
   render: function() {
     var styles = {
       paddingTop: this.props.ws.wh/10,
+      paddingBottom: this.props.ws.wh/10,
       textAlign: 'center'
     };
+
+    var online = 'Online: ' + this.state.online;
+
+    console.log('Recent ' + JSON.stringify(this.state.recent));
 
     return (
       <div className='Home'
@@ -30,6 +55,19 @@ module.exports = React.createClass({
         <br/>
         <Link to='council'
           value='Advise'
+          ws={this.props.ws}/>
+        <br/>
+        <br/>
+        <Link to='about'
+          value='What is this?'
+          ws={this.props.ws}/>
+        <br/>
+        <br/>
+        <Text
+          ws={this.props.ws}
+          value={online}/>
+        <br/>
+        <Recent
           ws={this.props.ws}/>
       </div>
     );

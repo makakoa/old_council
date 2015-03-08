@@ -6,9 +6,10 @@ var Router = require('react-router');
 //Import components
 var App = require('./components/app');
 var Home = require('./components/home');
-var Ask = require('./components/ask');
-var Results = require('./components/results');
-var Council = require('./components/council');
+var About = require('./components/about');
+var Ask = require('./components/asking/ask');
+var Results = require('./components/asking/results');
+var Council = require('./components/answering/council');
 var NotFound = require('./components/notfound');
 
 //Router setup
@@ -22,6 +23,7 @@ var routes = (
     <Route name='ask' handler={Ask} />
     <Route name='results' handler={Results} />
     <Route name='council' handler={Council} />
+    <Route name='about' handler={About} />
     <NotFoundRoute handler={NotFound} />
   </Route>
 );

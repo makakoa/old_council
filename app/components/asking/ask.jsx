@@ -4,13 +4,13 @@ var React = require('react');
 var uuid = require('uuid');
 var Radium = require('radium');
 
-var QuestionStore = require('../stores/question-store');
-var QuestionActions = require('../actions/question-actions');
+var QuestionStore = require('../../stores/question-store');
+var QuestionActions = require('../../actions/question-actions');
 
-var Link = require('./link');
+var Link = require('../link');
 var AskForm = require('./ask-form');
-var Button = require('./button');
-var Header = require('./header');
+var Button = require('../button');
+var Header = require('../header');
 
 var getState = function() {
   return QuestionStore.getQuestion();
