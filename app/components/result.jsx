@@ -26,7 +26,8 @@ module.exports = React.createClass({
       width: this.props.ws.ww * 0.95,
       marginLeft: 'auto',
       marginRight: 'auto',
-      marginTop: '5px'
+      marginTop: '5px',
+      padding: '10px'
     };
 
     var options = [];

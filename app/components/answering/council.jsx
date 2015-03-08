@@ -7,7 +7,6 @@ var CouncilStore = require('../../stores/council-store');
 
 var Link = require('../link');
 var Header = require('../header');
-var CouncilList = require('./council-list-question');
 var CouncilQuestion = require('./council-question');
 var Recent = require('../recent');
 
@@ -59,15 +58,21 @@ module.exports = React.createClass({
       questions = [{
         prompt: 'Waiting on requests...',
         options: [],
-        _id: ''
       }];
     }
     list = questions.map(this.buildList);
-    console.log(JSON.stringify(questions));
 
     var modWs = {
-      ww: this.props.ws.ww *0.7,
+      ww: this.props.ws.ww *0.5,
       wh: this.props.wh
+    };
+    var half = {
+      display: 'inline-block',
+      width: modWs.ww,
+      boxSizing: 'border-box',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      float: 'left'
     };
 
     return (
@@ -75,21 +80,24 @@ module.exports = React.createClass({
         style={this.buildStyles(styles)}>
         <Header
           ws={this.props.ws}
-          value='"Council, I seek your guidance..."'/><br/>
-        <Header
-          proportion='0.5'
-          ws={this.props.ws}
-          value='Agenda'/>
-        {list}
-        <br/>
-        <Recent
-          ws={modWs}/>
+          value='The Council Meeting'/><br/>
         <br/>
         <Link
           ws={this.props.ws}
           to='home'
           kind='danger'
           value='Leave Council' />
+        <br/>
+        <div style={this.buildStyles(half)}>
+          <Header
+            proportion='0.5'
+            ws={this.props.ws}
+            value='Council Agenda'/>
+          {list}
+        </div>
+        <Recent
+          ws={modWs}
+          style={this.buildStyles(half)}/>
       </div>
     );
   }
