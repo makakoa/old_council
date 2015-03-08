@@ -4,7 +4,7 @@ var React = require('react');
 var Radium = require('radium');
 
 var OptionResult = require('./result-option');
-var Text = require('./text');
+var Text = require('../text');
 
 module.exports = React.createClass({
   displayName: 'Result',

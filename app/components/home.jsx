@@ -8,7 +8,7 @@ var SocketStore = require('../stores/socket-store');
 var Link = require('./link');
 var Header = require('./header');
 var Text = require('./text');
-var Recent = require('./recent');
+var Recent = require('./results/recent');
 
 var getOnline = function() {
   return SocketStore.getOnline();

@@ -8,7 +8,7 @@ var CouncilStore = require('../../stores/council-store');
 var Link = require('../link');
 var Header = require('../header');
 var CouncilQuestion = require('./council-question');
-var Recent = require('../recent');
+var Recent = require('../results/recent');
 
 var getQuestions = function() {
   return CouncilStore.getQuestions();

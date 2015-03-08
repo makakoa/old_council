@@ -6,7 +6,8 @@ var QuestionStore = require('../../stores/question-store');
 
 var Link = require('../link');
 var Header = require('../header');
-var Result = require('../result');
+var Result = require('./result');
+var Recent = require('./recent');
 
 var getResults = function() {
   return QuestionStore.getResults();
@@ -95,6 +96,7 @@ module.exports = React.createClass({
           ws={this.props.ws}
           prompt={status}
           options={this.state.options}/>
+          <br/>
         <Link
           ws={this.props.ws}
           to='ask'
@@ -103,6 +105,10 @@ module.exports = React.createClass({
           ws={this.props.ws}
           to='home'
           value='Return to The Council' />
+          <br/>
+          <br/>
+        <Recent
+          ws={this.props.ws} />
       </div>
     );
   }

@@ -8,7 +8,7 @@ var App = require('./components/app');
 var Home = require('./components/home');
 var About = require('./components/about');
 var Ask = require('./components/asking/ask');
-var Results = require('./components/asking/results');
+var Results = require('./components/results/results');
 var Council = require('./components/answering/council');
 var NotFound = require('./components/notfound');
 
