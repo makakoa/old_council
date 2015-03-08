@@ -43,7 +43,6 @@ module.exports = React.createClass({
 
   storeDidChange: function() {
     if(QuestionStore.getResults()) {
-      console.log('Loading results');
       clearInterval(this.timer);
       this.setState(getResults());
     }

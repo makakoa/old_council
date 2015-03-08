@@ -10,7 +10,6 @@ module.exports = React.createClass({
 
   vote: function() {
     CouncilActions.vote(this.props);
-    console.log('removing ' + this.props.question);
   },
 
   render: function() {

@@ -39,8 +39,6 @@ module.exports = React.createClass({
 
     var online = 'Online: ' + this.state.online;
 
-    console.log('Recent ' + JSON.stringify(this.state.recent));
-
     return (
       <div className='Home'
         style={this.buildStyles(styles)}>

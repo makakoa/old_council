@@ -2,22 +2,21 @@
 
 var React = require('react');
 
+var Link = require('./components/link');
+
 var NotFound = React.createClass({
   displayName: '404',
-  propTypes: {},
-  mixins: [],
-
-  getInitialState: function() {return null;},
-
-  componentWillMount: function() {},
-
-  componentWillUnmount: function() {},
 
   render: function() {
     return (
-      <p>
-        Page not found
-      </p>
+      <div>
+        <h1>
+          Page not found
+        </h1>
+        <Link
+          to='home'
+          value='Main Page'/>
+      </div>
     );
   }
 });

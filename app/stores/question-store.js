@@ -9,35 +9,22 @@ var QuestionStore = Flux.createStore({
     return QuestionStore.storeQuestion;
   },
   getResults: function() {
-    console.log(QuestionStore.results.options);
-/*    QuestionStore.results.options = QuestionStore.results.options.sort(function(a, b) {
-      return b.votes - a.votes;
-    });
-    QuestionStore.results.options[0].result = 'won';
-    for (var i = 1; i < QuestionStore.results.options.length; i++) {
-      QuestionStore.results.options[i].result = 'lost';
-    }*/
     return QuestionStore.results;
   },
   createQuestion: function(data) {
     QuestionStore.storeQuestion = data;
-    console.log('Store: create question ' + data.options);
   },
   updatePrompt: function(data) {
     QuestionStore.storeQuestion.prompt = data.value;
-    console.log('Store: update prompt');
   },
   createOption: function(data) {
     QuestionStore.storeQuestion.options.push({option: ''});
-    console.log('Store: create option ' + data);
   },
   updateOption: function(data) {
     QuestionStore.storeQuestion.options[data.index].option = data.value;
-    console.log('Store: update option ' + data.index + ' as ' + data.value);
   },
   deleteOption: function(data) {
     QuestionStore.storeQuestion.options.splice(data, 1);
-    console.log('Store: delete option ' + data);
   },
   questionAsked: function() {
     QuestionStore.results = {};

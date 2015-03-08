@@ -35,7 +35,6 @@ var QuestionActions = Flux.createActions({
     };
   },
   deleteOption: function(data) {
-    console.log('Action: delete option');
     return {
       actionType: 'OPTION_DELETED',
       data: data
@@ -43,14 +42,12 @@ var QuestionActions = Flux.createActions({
   },
   askQuestion: function(data) {
     socket.emit('question:submit', data);
-    console.log('Action: question asked');
     return {
       actionType: 'QUESTION_ASKED',
       data: data
     };
   },
   questionAnswered: function(data) {
-    console.log('Action: question answered');
     return {
       actionType: 'QUESTION_ANSWERED',
       data: data

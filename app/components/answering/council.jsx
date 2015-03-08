@@ -26,7 +26,6 @@ module.exports = React.createClass({
   },
 
   storeDidChange: function() {
-    console.log('Updating from store');
     this.setState({
       questions: getQuestions()
     });

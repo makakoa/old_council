@@ -11,7 +11,6 @@ var notify = function() {
 };
 
 socket.on('question:new', function(data) {
-  console.log('socketnew: ' + JSON.stringify(data));
   CouncilActions.receiveQuestion(data);
   notify();
 });
