@@ -10,17 +10,16 @@ module.exports = React.createClass({
 
   vote: function() {
     CouncilActions.vote(this.props);
+    console.log('removing ' + this.props.question);
   },
 
   render: function() {
-    console.log(this.props);
     return (
       <div className='CouncilOptions'>
         <Button
           ws={this.props.ws}
           value={this.props.value}
-          key={this.props.key}
-          index={this.props.key}
+          index={this.props.index}
           _id={this.props._id}
           buttonCallback={this.vote}/>
       </div>

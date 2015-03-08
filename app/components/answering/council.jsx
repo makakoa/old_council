@@ -15,10 +15,6 @@ var getQuestions = function() {
   return CouncilStore.getQuestions();
 };
 
-var getCurrent = function() {
-  return CouncilStore.getCurrent();
-};
-
 module.exports = React.createClass({
   displayName: 'Council',
   mixins: [CouncilStore.mixin, Radium.StyleResolverMixin],
@@ -26,33 +22,26 @@ module.exports = React.createClass({
   getInitialState: function() {
     CouncilActions.loadQuestions();
     return {
-      _id: '',
-      current: {
-        prompt: 'Loading...',
-        options: []
-      },
       questions: []
     };
   },
 
   storeDidChange: function() {
     console.log('Updating from store');
-    var list = getQuestions();
-    var single = getCurrent();
-    console.log('View current: ' + JSON.stringify(single));
     this.setState({
-      questions: list,
-      current: single
+      questions: getQuestions()
     });
   },
 
   buildList: function(fields, index) {
     return (
-      <CouncilList
-        key={index}
+      <CouncilQuestion
+        question={index}
         index={index}
+        _id={fields._id}
         ws={this.props.ws}
-        prompt={fields.prompt}/>
+        prompt={fields.prompt}
+        options={fields.options}/>
     );
   },
 
@@ -62,39 +51,36 @@ module.exports = React.createClass({
       paddingTop: this.props.ws.wh/10
     };
 
-    var current;
     var list;
+    var questions;
     if (this.state.questions.length > 0) {
-      console.log('Assembling list: ' + this.state.questions.length);
-      current = this.state.current;
-      list = this.state.questions.map(this.buildList);
+      questions = this.state.questions;
     } else {
-      current = {
+      questions = [{
         prompt: 'Waiting on requests...',
         options: [],
         _id: ''
-      };
+      }];
     }
+    list = questions.map(this.buildList);
+    console.log(JSON.stringify(questions));
+
     var modWs = {
       ww: this.props.ws.ww *0.7,
       wh: this.props.wh
     };
+
     return (
       <div className='Council'
         style={this.buildStyles(styles)}>
         <Header
           ws={this.props.ws}
           value='"Council, I seek your guidance..."'/><br/>
-        <CouncilQuestion
+        <Header
+          proportion='0.5'
           ws={this.props.ws}
-          _id={current._id}
-          prompt={current.prompt}
-          options={current.options}/><br/>
-          <Header
-            proportion='0.5'
-            ws={this.props.ws}
-            value='Agenda'/>
-          {list}
+          value='Agenda'/>
+        {list}
         <br/>
         <Recent
           ws={modWs}/>

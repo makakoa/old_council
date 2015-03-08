@@ -7,7 +7,7 @@ var Link = require('./link');
 var Header = require('./header');
 var Text = require('./text');
 
-var summary = 'Welcome to The Council.\nHere you may seek answers by asking a question to The Council or provide valuable guidance to those looking for answers.\n "Seek Guidance" to ask a question.\n "Advise" to join The Council and provide guidance.\nQuestions have 30 seconds to be answered by The Council. If The Council cannot come to a conclusion, they will flip a coin and let the universe decide the fate of the answer. Pro tip: The Council will *pop* when new requests arrive if you are on The Council and the app is open.';
+var summary = 'Welcome to The Council.\nHere you may seek answers by asking a question to The Council or provide valuable guidance to those looking for answers.\n "Seek Guidance" to ask a question.\n "Advise" to join The Council and provide guidance.\nQuestions have 30 seconds to be answered by The Council. If The Council cannot come to a conclusion, they will flip a coin and let the universe decide. Pro tip: The Council will *pop* when new requests arrive if you are on The Council and the app is open.';
 
 module.exports = React.createClass({
   displayName: 'About',

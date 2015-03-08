@@ -14,7 +14,7 @@ module.exports = React.createClass({
         ws={this.props.ws}
         _id={this.props._id}
         index={index}
-        key={index}
+        question={this.props.question}
         value={fields.option}/>
     );
   },
