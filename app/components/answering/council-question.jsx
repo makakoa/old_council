@@ -3,7 +3,7 @@
 var React = require('react');
 
 var Option = require('./council-question-options');
-var Text = require('./text');
+var Text = require('../text');
 
 module.exports = React.createClass({
   displayName: 'CouncilQuestion',

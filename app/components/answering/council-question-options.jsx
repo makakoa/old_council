@@ -1,9 +1,9 @@
 'use strict';
 
 var React = require('react');
-var CouncilActions = require('../actions/council-actions');
+var CouncilActions = require('../../actions/council-actions');
 
-var Button = require('./button');
+var Button = require('../button');
 
 module.exports = React.createClass({
   displayName: 'CouncilQuestionOptions',

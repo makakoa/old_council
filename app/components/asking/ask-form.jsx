@@ -1,11 +1,11 @@
 'use strict';
 
 var React = require('react');
-var QuestionActions = require('../actions/question-actions');
+var QuestionActions = require('../../actions/question-actions');
 
 var QuestionInput = require('./question-input');
 var OptionInput = require('./option-input');
-var Button = require('./button');
+var Button = require('../button');
 
 module.exports = React.createClass({
   dipslayName: 'AskForm',

@@ -2,18 +2,16 @@
 
 var React = require('react');
 var Radium = require('radium');
-var QuestionStore = require('../stores/question-store');
+var QuestionStore = require('../../stores/question-store');
 
 var OptionResult = require('./option-result');
-var Link = require('./link');
-var Header = require('./header');
-var Text = require('./text');
+var Link = require('../link');
+var Header = require('../header');
+var Text = require('../text');
 
 var getResults = function() {
   return QuestionStore.getResults();
 };
-
-var Link = require('./link');
 
 module.exports = React.createClass({
   displayName: 'Results',

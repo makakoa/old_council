@@ -9,7 +9,7 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <div className='Waiting'>
+      <div className='OptionResult'>
         <Header
           ws={this.props.ws}
           kind={this.props.result}

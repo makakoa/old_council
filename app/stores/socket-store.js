@@ -3,7 +3,7 @@
 var Flux = require('../Flux');
 
 var SocketStore = Flux.createStore({
-  recent: {},
+  recent: [],
   online: 0,
   getRecent: function() {
     return SocketStore.recent;

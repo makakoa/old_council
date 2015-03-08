@@ -5,13 +5,20 @@
 var Flux = require('../Flux');
 var socket = require('../socket');
 
-socket.on('online', function(data) {
-  console.log(data);
+socket.on('recent', function(data) {
+  console.log('recent ' + data);
+  SocketActions.updateRecent(data);
 });
 
-socket.on('update:users', function(data) {
+socket.on('update:recent', function(data) {
   console.log(data);
-};
+  SocketActions.updateRecent(data);
+});
+
+socket.on('online', function(data) {
+  console.log(data);
+  SocketActions.updateOnline(data);
+});
 
 var SocketActions = Flux.createActions({
   updateRecent: function(data) {
@@ -20,12 +27,12 @@ var SocketActions = Flux.createActions({
       data: data
     };
   },
-  updateUsers: function(data) {
+  updateOnline: function(data) {
     return {
-      actionType: 'UPDATE_USERS',
+      actionType: 'UPDATE_ONLINE',
       data: data
-    }
-  };
+    };
+  }
 });
 
 module.exports = SocketActions;

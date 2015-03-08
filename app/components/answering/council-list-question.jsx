@@ -2,7 +2,7 @@
 
 var React = require('react');
 
-var Text = require('./text');
+var Text = require('../text');
 
 module.exports = React.createClass({
   displayName: 'CouncilListItem',
