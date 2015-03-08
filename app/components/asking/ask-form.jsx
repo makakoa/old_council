@@ -15,7 +15,6 @@ module.exports = React.createClass({
   },
 
   deleteOption: function(data) {
-    console.log('AskForm: delete option');
     QuestionActions.deleteOption(data.index);
   },
 

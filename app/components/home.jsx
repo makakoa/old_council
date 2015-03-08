@@ -8,7 +8,7 @@ var SocketStore = require('../stores/socket-store');
 var Link = require('./link');
 var Header = require('./header');
 var Text = require('./text');
-var Recent = require('./recent');
+var Recent = require('./results/recent');
 
 var getOnline = function() {
   return SocketStore.getOnline();
@@ -38,8 +38,6 @@ module.exports = React.createClass({
     };
 
     var online = 'Online: ' + this.state.online;
-
-    console.log('Recent ' + JSON.stringify(this.state.recent));
 
     return (
       <div className='Home'

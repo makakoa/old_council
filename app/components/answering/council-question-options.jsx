@@ -13,14 +13,12 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    console.log(this.props);
     return (
       <div className='CouncilOptions'>
         <Button
           ws={this.props.ws}
           value={this.props.value}
-          key={this.props.key}
-          index={this.props.key}
+          index={this.props.index}
           _id={this.props._id}
           buttonCallback={this.vote}/>
       </div>

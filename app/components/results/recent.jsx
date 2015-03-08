@@ -3,10 +3,10 @@
 var React = require('react');
 var Radium = require('radium');
 
-var SocketStore = require('../stores/socket-store');
+var SocketStore = require('../../stores/socket-store');
 
 var Result = require('./result');
-var Text = require('./text');
+var Text = require('../text');
 
 var getRecent = function() {
   return SocketStore.getRecent();

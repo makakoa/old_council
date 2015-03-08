@@ -4,7 +4,7 @@ var React = require('react');
 var Radium = require('radium');
 
 var OptionResult = require('./result-option');
-var Text = require('./text');
+var Text = require('../text');
 
 module.exports = React.createClass({
   displayName: 'Result',
@@ -23,10 +23,11 @@ module.exports = React.createClass({
     var styles = {
       background: '#FFFFF0',
       border: '1px solid black',
-      width: this.props.ws.ww *0.75,
+      width: this.props.ws.ww * 0.95,
       marginLeft: 'auto',
       marginRight: 'auto',
-      marginTop: '5px'
+      marginTop: '5px',
+      padding: '10px'
     };
 
     var options = [];
