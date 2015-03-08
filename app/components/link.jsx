@@ -20,7 +20,7 @@ module.exports = React.createClass({
       <Link to={this.props.to}>
         <Button
           kind='link'
-          buttonCallback={this.props.linkCb}
+          buttonCallback={linkCb}
           {...this.props}
           value={this.props.value}/>
       </Link>
