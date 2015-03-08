@@ -17,7 +17,7 @@ var QuestionStore = Flux.createStore({
   updatePrompt: function(data) {
     QuestionStore.storeQuestion.prompt = data.value;
   },
-  createOption: function(data) {
+  createOption: function() {
     QuestionStore.storeQuestion.options.push({option: ''});
   },
   updateOption: function(data) {

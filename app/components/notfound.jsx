@@ -2,7 +2,7 @@
 
 var React = require('react');
 
-var Link = require('./components/link');
+var Link = require('./link');
 
 var NotFound = React.createClass({
   displayName: '404',
