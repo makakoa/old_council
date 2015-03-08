@@ -4,10 +4,9 @@ var React = require('react');
 var Radium = require('radium');
 var QuestionStore = require('../../stores/question-store');
 
-var OptionResult = require('./option-result');
 var Link = require('../link');
 var Header = require('../header');
-var Text = require('../text');
+var Result = require('../result');
 
 var getResults = function() {
   return QuestionStore.getResults();
@@ -79,10 +78,11 @@ module.exports = React.createClass({
       status = 'Waiting on report...';
     }
 
-    if (!this.state.options) this.state.options = [];
-    var optionsResults = this.state.options.map(this.buildResults);
+    var options = [];
+    if (this.state.options) options = this.state.options;
+    var optionsResults = options.map(this.buildResults);
     if (this.state.hasOwnProperty('prompt')){
-      status = '"' + this.state.prompt + '"';
+      status = this.state.prompt;
     };
 
     return (
@@ -91,11 +91,10 @@ module.exports = React.createClass({
         <Header
           ws={this.props.ws}
           value={header}/>
-        <Text
+        <Result
           ws={this.props.ws}
-          fStyle='italic'
-          value={status}/>
-        {optionsResults}
+          prompt={status}
+          options={this.state.options}/>
         <Link
           ws={this.props.ws}
           to='ask'
