@@ -46,9 +46,8 @@ open = {
     options: [{option: 'ask for guidance', votes: 0}, {option: 'join the council', votes: 0}, {option: 'read about the council', votes: 0}],
     total: 0,
     _id: 'suchunique5'
-  },
+  }
 };
-
 
 module.exports = function(io) {
   var report = function(question) {
