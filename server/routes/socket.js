@@ -6,27 +6,49 @@ var open = {};
 var recent = [{}, {}, {}, {}, {}];
 
 //auto populate for dev
-open.suchunique = {
-  start: Date.now() - 27000,
-  time: 30000,
-  prompt: 'What is life?',
-  options: [
-    {
-      option: 'a game',
-      votes: 0
-    },
-    {
-      option: 'a mystery',
-      votes: 0
-    },
-    {
-      option: 'the matrix',
-      votes: 0
-    }
-  ],
-  total: 0,
-  _id: 'suchunique'
+open = {
+  suchunique: {
+    start: Date.now() - 29000,
+    time: 30000,
+    prompt: 'What is life?',
+    options: [{option: 'a game', votes: 0}, {option: 'a mystery', votes: 0}, {option: 'the matrix', votes: 0}],
+    total: 0,
+    _id: 'suchunique'
+  },
+  suchunique2: {
+    start: Date.now() - 28000,
+    time: 30000,
+    prompt: 'How many fingers am I holding up?',
+    options: [{option: 'one', votes: 0}, {option: 'four', votes: 0}, {option: 'twelve', votes: 0}],
+    total: 0,
+    _id: 'suchunique2'
+  },
+  suchunique3: {
+    start: Date.now() - 27000,
+    time: 30000,
+    prompt: 'What is The Council?',
+    options: [{option: 'a game', votes: 0}, {option: 'nothing but truth', votes: 0}, {option: 'typical politics', votes: 0}],
+    total: 0,
+    _id: 'suchunique3'
+  },
+  suchunique4: {
+    start: Date.now() - 26000,
+    time: 30000,
+    prompt: 'Why is a raven like a writing desk?',
+    options: [{option: 'both have the letter e', votes: 0}, {option: 'it\'s not', votes: 0}, {option: 'why not', votes: 0}],
+    total: 0,
+    _id: 'suchunique4'
+  },
+  suchunique5: {
+    start: Date.now() - 25000,
+    time: 30000,
+    prompt: 'What should I do?',
+    options: [{option: 'ask for guidance', votes: 0}, {option: 'join the council', votes: 0}, {option: 'read about the council', votes: 0}],
+    total: 0,
+    _id: 'suchunique5'
+  },
 };
+
 
 module.exports = function(io) {
   var report = function(question) {
