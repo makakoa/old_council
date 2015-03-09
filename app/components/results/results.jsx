@@ -48,15 +48,6 @@ module.exports = React.createClass({
     }
   },
 
-  buildResults: function(fields, index) {
-    return (
-      <OptionResult
-        ws={this.props.ws}
-        option={fields.option}
-        result={fields.result}/>
-    );
-  },
-
   render: function() {
     var styles = {
       textAlign: 'center',
@@ -80,7 +71,6 @@ module.exports = React.createClass({
 
     var options = [];
     if (this.state.options) options = this.state.options;
-    var optionsResults = options.map(this.buildResults);
     if (this.state.hasOwnProperty('prompt')){
       status = this.state.prompt;
     };
