@@ -23,7 +23,8 @@
     "gulp-jsxcs": "^0.1.8",
     "gulp-nodemon": "^1.0.5",
     "gulp-rimraf": "^0.1.1",
-    "gulp-webpack": "^1.2.0"
+    "gulp-webpack": "^1.2.0",
+    "webpack": "^1.7.2"
   },
   "dependencies": {
     "express": "^4.12.1",
