@@ -9,18 +9,18 @@ var recent = [{}, {}, {}, {}, {}];
 open.suchunique = {
   start: Date.now() - 27000,
   time: 30000,
-  prompt: 'Is this app working?',
+  prompt: 'What is life?',
   options: [
     {
-      option: 'Yes',
+      option: 'a game',
       votes: 0
     },
     {
-      option: 'Eh sort of',
+      option: 'a mystery',
       votes: 0
     },
     {
-      option: 'No',
+      option: 'the matrix',
       votes: 0
     }
   ],
