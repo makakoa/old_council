@@ -34,7 +34,9 @@ module.exports = React.createClass({
     var styles = {
       paddingTop: this.props.ws.wh/10,
       paddingBottom: this.props.ws.wh/10,
-      textAlign: 'center'
+      textAlign: 'center',
+      display: 'flex',
+      justifyContent: 'space-around'
     };
 
     var online = 'Online: ' + this.state.online;
@@ -42,9 +44,10 @@ module.exports = React.createClass({
     return (
       <div className='Home'
         style={this.buildStyles(styles)}>
+        <div>
         <Header
           ws={this.props.ws}
-          value='Welcome To The Council'/>
+          value='The Council'/>
         <br/>
         <Link to='ask'
           value='Seek Guidance'
@@ -65,8 +68,11 @@ module.exports = React.createClass({
           ws={this.props.ws}
           value={online}/>
         <br/>
+        </div>
+        <div>
         <Recent
           ws={this.props.ws}/>
+          </div>
       </div>
     );
   }

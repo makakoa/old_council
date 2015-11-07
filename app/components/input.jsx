@@ -22,6 +22,8 @@ module.exports = React.createClass({
       fontFamily: '\'Raleway\', Open sans',
       fontSize: this.props.ws.ww / 50,
       margin: '5px',
+      padding: '5px',
+      borderRadius: '5px',
 
       states: [
       {focus: {

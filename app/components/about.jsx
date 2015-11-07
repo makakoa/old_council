@@ -23,6 +23,12 @@ module.exports = React.createClass({
       marginRight: 'auto'
     };
 
+    var summaryStyle = {
+        'background-color': 'white',
+        'border-radius': '1em',
+        'padding': '1em'
+    };
+
     return (
       <div className='About'
         style={this.buildStyles(styles)}>
@@ -32,6 +38,7 @@ module.exports = React.createClass({
         <br/>
         <Text
           ws={this.props.ws}
+          style={this.buildStyles(summaryStyle)}
           fStyle='italic'
           value={summary}/>
         <br/>

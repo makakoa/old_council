@@ -19,10 +19,11 @@ module.exports = React.createClass({
     var styles = {
       fontFamily: '\'Raleway\', Open sans',
       border: '1px solid',
-      borderRadius: '2px',
+      borderRadius: '5px',
       fontSize: this.props.ws.ww / 50,
       cursor: 'pointer',
-      margin: '3px',
+      margin: '5px',
+      padding: '5px',
 
       modifiers: [
       {kind: {

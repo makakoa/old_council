@@ -23,7 +23,8 @@ module.exports = React.createClass({
     var styles = {
       background: '#FFFFF0',
       border: '1px solid black',
-      width: this.props.ws.ww * 0.95,
+      borderRadius: '10px',
+      width: this.props.ws.ww * 0.5,
       marginLeft: 'auto',
       marginRight: 'auto',
       marginTop: '5px',

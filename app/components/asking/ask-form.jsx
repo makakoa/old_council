@@ -1,6 +1,8 @@
 'use strict';
 
 var React = require('react');
+var Radium = require('radium');
+
 var QuestionActions = require('../../actions/question-actions');
 
 var QuestionInput = require('./question-input');
@@ -9,6 +11,7 @@ var Button = require('../button');
 
 module.exports = React.createClass({
   dipslayName: 'AskForm',
+  mixins: [Radium.StyleResolverMixin],
 
   addOption: function() {
     QuestionActions.createOption();
@@ -42,6 +45,12 @@ module.exports = React.createClass({
   render: function() {
     var OptionNodes = this.props.options.map(this.buildOptions);
 
+    var addOptionStyle = {
+        'padding': '5px',
+        'border-radius' :'5%',
+        'background-color': 'white'
+    };
+
     return (
       <div className='AskForm'>
         <QuestionInput
@@ -51,6 +60,7 @@ module.exports = React.createClass({
         <Button
           buttonCallback={this.addOption}
           value='add option'
+          style={this.buildStyles(addOptionStyle)}
           kind='add'
           ws={this.props.ws}/>
       </div>
