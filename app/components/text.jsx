@@ -13,12 +13,12 @@ module.exports = React.createClass({
       margin: 0,
       padding: 0,
 
-      modifiers: [
-      {fStyle: {
-        bold: {fontWeight: 'bold'},
-        italic: {fontStyle: 'italic'}
-      }}
-      ]
+      modifiers: [{
+        fStyle: {
+          bold: {fontWeight: 'bold'},
+          italic: {fontStyle: 'italic'}
+        }
+      }]
     };
 
     return (

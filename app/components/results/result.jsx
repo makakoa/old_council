@@ -5,6 +5,7 @@ var Radium = require('radium');
 
 var OptionResult = require('./result-option');
 var Text = require('../text');
+var Header = require('../header');
 
 module.exports = React.createClass({
   displayName: 'Result',
@@ -12,10 +13,10 @@ module.exports = React.createClass({
 
   buildResults: function(fields, index) {
     return (
-      <OptionResult
-        ws={this.props.ws}
-        option={fields.option}
-        result={fields.result}/>
+        <OptionResult
+      ws={this.props.ws}
+      option={fields.option}
+      result={fields.result}/>
     );
   },
 
@@ -25,10 +26,11 @@ module.exports = React.createClass({
       border: '1px solid black',
       borderRadius: '10px',
       width: this.props.ws.ww * 0.5,
+      'text-align': 'left',
       marginLeft: 'auto',
       marginRight: 'auto',
       marginTop: '5px',
-      padding: '10px'
+      padding: '20px'
     };
 
     var options = [];
@@ -36,12 +38,12 @@ module.exports = React.createClass({
     var optionsResults = options.map(this.buildResults);
 
     return (
-      <div className='Result'
-        style={this.buildStyles(styles)}>
-        <Text
-          ws={this.props.ws}
-          fStyle='italic'
-          value={this.props.prompt}/>
+        <div className='Result'
+      style={this.buildStyles(styles)}>
+        <Header
+      ws={this.props.ws}
+      proportion={0.5}
+        value={this.props.prompt}/>
         {optionsResults}
       </div>
     );

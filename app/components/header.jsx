@@ -24,10 +24,12 @@ module.exports = React.createClass({
       modifiers: [
       {kind: {
         won: {
-          fontSize: this.props.ws.ww/30,
+          'margin-left': '10px',
+          fontSize: this.props.ws.ww/40,
           textDecoration: 'underline'
         },
         lost: {
+          'margin-left': '10px',
           fontSize: this.props.ws.ww/40,
           color: 'gray'
         }

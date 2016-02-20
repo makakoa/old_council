@@ -57,7 +57,7 @@ module.exports = React.createClass({
     var time = Math.round(this.state.time / 100);
     var seconds = (time/10).toFixed(1);
     var remaining = (30 - seconds);
-    var remaining = Math.max(remaining, 0).toFixed(1);
+    remaining = Math.max(remaining, 0).toFixed(1);
 
     var header = '';
     var status = '';
@@ -65,7 +65,7 @@ module.exports = React.createClass({
       header = 'Deliberation in progress...';
       status = remaining + 's remaining';
     } else {
-      header = 'Deliberation has concluded.'
+      header = 'Deliberation has concluded.';
       status = 'Waiting on report...';
     }
 
@@ -73,7 +73,7 @@ module.exports = React.createClass({
     if (this.state.options) options = this.state.options;
     if (this.state.hasOwnProperty('prompt')){
       status = this.state.prompt;
-    };
+    }
 
     return (
       <div className='Results'

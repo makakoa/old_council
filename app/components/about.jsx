@@ -7,7 +7,7 @@ var Link = require('./link');
 var Header = require('./header');
 var Text = require('./text');
 
-var summary = 'Welcome to The Council.\nHere you may seek answers by asking a question to The Council or provide valuable guidance to those looking for answers.\n "Seek Guidance" to ask a question.\n "Advise" to join The Council and provide guidance.\nQuestions have 30 seconds to be answered by The Council. If The Council cannot come to a conclusion, they will flip a coin and let the universe decide. Pro tip: The Council will *pop* when new requests arrive if you are on The Council and the app is open.';
+var summary = 'Welcome to The Council.\n Here, answers are sought and answers are given.\n\n "Seek Guidance" to ask questions.\n\n "Advise" to join The Council and provide guidance.\n\nQuestions have 30 seconds to be answered by The Council.';
 
 module.exports = React.createClass({
   displayName: 'About',
@@ -24,8 +24,10 @@ module.exports = React.createClass({
     };
 
     var summaryStyle = {
+        'white-space': 'pre-wrap',
         'background-color': 'white',
-        'border-radius': '1em',
+        fontWeight: 'bold',
+        'border-radius': '10px',
         'padding': '1em'
     };
 
@@ -34,12 +36,11 @@ module.exports = React.createClass({
         style={this.buildStyles(styles)}>
         <Header
           ws={this.props.ws}
-          value='The Council'/>
+          value='About'/>
         <br/>
         <Text
           ws={this.props.ws}
           style={this.buildStyles(summaryStyle)}
-          fStyle='italic'
           value={summary}/>
         <br/>
         <br/>

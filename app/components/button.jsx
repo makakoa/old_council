@@ -23,11 +23,13 @@ module.exports = React.createClass({
       fontSize: this.props.ws.ww / 50,
       cursor: 'pointer',
       margin: '5px',
-      padding: '5px',
+      padding: '10px',
 
       modifiers: [
       {kind: {
-        link: {},
+        link: {
+          background: '#b3b3b3'
+        },
         danger: {
           background: '#f74a57',
           color: '#fff',
