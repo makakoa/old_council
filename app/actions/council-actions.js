@@ -7,7 +7,14 @@ var socket = require('../socket');
 
 var filename = 'pop'; // sound recorded by Mark DiAngelo
 var notify = function() {
-  window.document.getElementById('sound').innerHTML = '<audio autoplay="autoplay"><source src="' + filename + '.mp3" type="audio/mpeg" /><source src="' + filename + '.ogg" type="audio/ogg" /><embed hidden="true" autostart="true" loop="false" src="' + filename + '.mp3" /></audio>';
+  window.document.getElementById('sound').innerHTML =
+    '<audio autoplay="autoplay"><source src="'
+    + filename
+    + '.mp3" type="audio/mpeg" /><source src="'
+    + filename
+    + '.ogg" type="audio/ogg" /><embed hidden="true" autostart="true" loop="false" src="'
+    + filename
+    + '.mp3" /></audio>';
 };
 
 socket.on('question:new', function(data) {

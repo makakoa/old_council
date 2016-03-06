@@ -8,7 +8,7 @@ var rimraf = require('gulp-rimraf');
 var webpack = require('gulp-webpack');
 var nodemon = require('gulp-nodemon');
 
-var buildDevCfg = require('./webpack.dev-config');
+var webpackConfig = require('./webpack.config');
 
 var paths = {
   front: ['app/**/*.js'], // lint jsx files when can
@@ -49,7 +49,7 @@ gulp.task('copy', function() {
 gulp.task('build:dev', function() {
   return gulp
     .src('app/app.js')
-    .pipe(webpack(buildDevCfg))
+    .pipe(webpack(webpackConfig))
     .pipe(gulp.dest('build'));
 });
 
