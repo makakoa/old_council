@@ -1,10 +1,10 @@
 'use strict';
 
-var React = require('react');
-var Radium = require('radium');
+var act = require('lib/act');
+var styler = require('lib/styler');
 
-module.exports = React.createClass({
-  mixins: [Radium.StyleResolverMixin],
+module.exports = act.cl({
+  mixins: [styler],
 
   render: function() {
     var styles = {
@@ -21,11 +21,10 @@ module.exports = React.createClass({
       }]
     };
 
-    return (
-      <p
-        style={this.buildStyles(styles)}>
-      {this.props.value}
-      </p>
+    return act.el(
+      'p',
+      {style: this.buildStyles(styles)},
+      this.props.value
     );
   }
 });

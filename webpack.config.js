@@ -28,7 +28,11 @@ module.exports = {
     }]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
+    modulesDirectories: [
+      'node_modules',
+      'app'
+    ]
   },
   plugins: debug ? [] : [
     new webpack.optimize.UglifyJsPlugin(),

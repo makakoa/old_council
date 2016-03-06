@@ -1,32 +1,32 @@
 'use strict';
 
-var React = require('react');
-var Radium = require('radium');
+var act = require('lib/act');
+var styler = require('lib/styler');
 
 var SocketStore = require('../stores/socket-store');
 
 var Link = require('./link');
-var Header = require('./header');
 var Text = require('./text');
+var Header = require('./header');
 var Recent = require('./results/recent');
 
-var getOnline = function() {
+function getOnlineCount() {
   return SocketStore.getOnline();
-};
+}
 
-module.exports = React.createClass({
+module.exports = act.cl({
   displayName: 'Home',
-  mixins: [Radium.StyleResolverMixin, SocketStore.mixin],
+  mixins: [styler],
 
   getInitialState: function() {
     return {
-      online: getOnline()
+      online: getOnlineCount()
     };
   },
 
   storeDidChange: function() {
     this.setState({
-      online: getOnline()
+      online: getOnlineCount()
     });
   },
 
@@ -41,39 +41,69 @@ module.exports = React.createClass({
 
     var online = 'Online: ' + this.state.online;
 
-    return (
-      <div className='Home'
-        style={this.buildStyles(styles)}>
-        <div>
-        <Header
-          ws={this.props.ws}
-          value='The Council'/>
-        <br/>
-        <Link to='ask'
-          value='Seek Guidance'
-          ws={this.props.ws}/>
-        <br/>
-        <br/>
-        <Link to='council'
-          value='Advise'
-          ws={this.props.ws}/>
-        <br/>
-        <br/>
-        <Link to='about'
-          value='What is this?'
-          ws={this.props.ws}/>
-        <br/>
-        <br/>
-        <Text
-          ws={this.props.ws}
-          value={online}/>
-        <br/>
-        </div>
-        <div>
-        <Recent
-          ws={this.props.ws}/>
-          </div>
-      </div>
+    return act.el(
+      'div',
+      {
+        className: 'Home',
+        style: this.buildStyles(styles)
+      },
+      act.el(
+        'div',
+        null,
+        act.el(
+          Header,
+          {
+            ws: this.props.ws,
+            value: 'The Council'
+          }),
+        act.el('br'),
+
+        act.el(
+          Link,
+          {
+            to: 'ask',
+            value: 'Seek Guidance',
+            ws: this.props.ws
+          }),
+        act.el('br'),
+        act.el('br'),
+
+        act.el(
+          Link,
+          {
+            to: 'council',
+            value: 'Advise',
+            ws: this.props.ws
+          }),
+        act.el('br'),
+        act.el('br'),
+
+        act.el(
+          Link,
+          {
+            to: 'about',
+            value: 'What is this?',
+            ws: this.props.ws
+          }),
+        act.el('br'),
+        act.el('br'),
+
+        act.el(
+          Text,
+          {
+            ws: this.props.ws,
+            value: online
+          }),
+        act.el('br')
+      ),
+      act.el(
+        'div',
+        null,
+        act.el(
+          Recent,
+          {
+            ws: this.props.ws
+          }))
     );
   }
 });
