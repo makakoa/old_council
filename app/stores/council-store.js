@@ -1,14 +1,15 @@
 'use strict';
 
-var Flux = require('../Flux');
+var Flux = require('../Flux'),
+    _ = require('lodash');
 
 var CouncilStore = Flux.createStore({
   openQuestions: [],
   loadQuestions: function(data) {
     CouncilStore.openQuestions = [];
-    for (var question in data) {
-      CouncilStore.openQuestions.push(data[question]);
-    }
+    _.map(data, function(question) {
+      CouncilStore.openQuestions.push(question);
+    });
   },
   getQuestions: function() {
     return CouncilStore.openQuestions;
@@ -18,7 +19,7 @@ var CouncilStore = Flux.createStore({
   },
   endQuestion: function(data) {
     CouncilStore.openQuestions.forEach(function(question, index) {
-      if (question._id == data._id) {
+      if (question._id === data._id) {
         CouncilStore.openQuestions.splice(index, 1);
       }
     });

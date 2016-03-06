@@ -12,7 +12,8 @@ var notify = function() {
     + filename
     + '.mp3" type="audio/mpeg" /><source src="'
     + filename
-    + '.ogg" type="audio/ogg" /><embed hidden="true" autostart="true" loop="false" src="'
+    + '.ogg" type="audio/ogg" /><embed hidden="true"'
+    + 'autostart="true" loop="false" src="'
     + filename
     + '.mp3" /></audio>';
 };
