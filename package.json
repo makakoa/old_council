@@ -2,34 +2,27 @@
   "name": "The_Council",
   "version": "1.0.0",
   "description": "",
-  "main": "gulpfile.js",
+  "main": "",
   "scripts": {
-    "postinstall": "gulp build",
+    "postinstall": "",
     "start": "node server/server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/makakoa/rhythm.git"
+    "url": "https://github.com/makakoa/The_Council.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/makakoa/rhythm/issues"
+    "url": "https://github.com/makakoa/The_Council/issues"
   },
-  "homepage": "https://github.com/makakoa/rhythm",
+  "homepage": "https://github.com/makakoa/The_Council",
   "devDependencies": {
-    "gulp": "^3.8.11",
-    "gulp-jshint": "^1.9.2",
-    "gulp-jsxcs": "^0.1.8",
-    "gulp-nodemon": "^1.0.5",
-    "gulp-rimraf": "^0.1.1",
-    "gulp-webpack": "^1.2.0",
     "jscs": "^2.11.0",
     "jscs-loader": "^0.2.0",
     "jshint": "^2.9.1",
     "jshint-loader": "^0.8.3",
-    "webpack": "^1.7.2",
-    "webpack-livereload-plugin": "^0.6.0"
+    "webpack": "^1.7.2"
   },
   "dependencies": {
     "express": "^4.12.1",

@@ -7,7 +7,6 @@ var styler = require('lib/styler');
 var SocketStore = require('../../stores/socket-store');
 
 var Result = require('./result');
-var Text = require('../text');
 
 var getRecent = function() {
   return SocketStore.getRecent();
@@ -45,12 +44,8 @@ module.exports = act.cl({
       'div',
       {
         className: 'Home',
-        style: styler({display: 'inline-block'})
+        style: styler(this.props.style)
       },
-      act.el(Text, {
-        ws: this.props.ws,
-        value: 'Recent'
-      }),
       recent
     );
   }

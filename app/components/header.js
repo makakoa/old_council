@@ -7,13 +7,6 @@ module.exports = act.cl({
   displayName: 'header',
 
   render: function render() {
-    var proportion; //modifier won't scale size
-    if (!this.props.proportion) {
-      proportion = 1;
-    } else {
-      proportion = this.props.proportion;
-    }
-
     var styles = {
       'font-family': '\'Raleway\', Open sans',
       'font-size': '30px',
@@ -24,7 +17,7 @@ module.exports = act.cl({
 
     return act.el(
       'p',
-      {style: styler(styles)},
+      {style: styler(styles, this.props.style)},
       this.props.value
     );
   }

@@ -8,8 +8,8 @@ module.exports = {
   devtool: debug ? 'inline-sourcemap' : null,
   entry: './app/app.js',
   output: {
-    path: './build',
-    publicPath: 'build/',
+    path: './public',
+    publicPath: 'public/',
     filename: 'scripts.min.js'
   },
   module: {
