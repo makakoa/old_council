@@ -1,5 +1,3 @@
 'use strict';
 
-var Router = require('router');
-
-Router.run(document.getElementById('app'));
+require('router').run(document.getElementById('app'));

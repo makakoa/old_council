@@ -36,12 +36,9 @@ module.exports = act.cl({
       display: 'block',
       background: '#FFFFF0',
       border: '1px solid black',
-      borderRadius: '10px',
+      'border-radius': '10px',
       'text-align': 'left',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      marginTop: '5px',
-      margin: '20px',
+      margin: '8px 20px',
       padding: '10px 20px'
     };
 

@@ -22,9 +22,9 @@ var routes = act.el(
   Route,
   {handler: App, path: '/'},
   act.el(DefaultRoute, {name: 'home', handler: Home}),
+  act.el(Route, {name: 'council', handler: Council}),
   act.el(Route, {name: 'ask', handler: Ask}),
   act.el(Route, {name: 'results', handler: Results}),
-  act.el(Route, {name: 'council', handler: Council}),
   act.el(Route, {name: 'about', handler: About}),
   act.el(NotFoundRoute, {handler: NotFound})
 );

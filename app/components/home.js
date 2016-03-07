@@ -52,24 +52,37 @@ module.exports = act.cl({
         {
           style: styler({
             width: '100%',
+            margin: '10px 0 0',
             display: 'flex',
-            'justify-content': 'space-around'
+            justifyContent: 'space-around',
+            alignItems: 'center'
           })
         },
-        act.el('div', {}),
+
+        act.el('div', { // left nav icon filler
+          style: {
+            width: '70px',
+            height: '70px'
+          }
+        }),
 
         act.el(Text, {
           style: {
-            'font-weight': 'bold',
-            'font-size': '40px'
+            margin: '5px 0 5px',
+            fontWeight: 'bold',
+            fontSize: '45px'
           },
           value: 'The Council'
         }),
 
         act.el(Link, {
           style: {
-            position: 'absolute',
-            padding: '4px'
+            'font-size': '30px',
+            color: '#cceaff',
+            width: '70px',
+            height: '70px',
+            'background': 'none',
+            'border': 'none'
           },
           to: 'ask',
           value: 'Ask',
@@ -80,6 +93,7 @@ module.exports = act.cl({
       act.el(
         'div', {
           style: {
+            overflow: 'hidden',
             'margin-top': '10px',
             border: '1px solid',
             'border-radius': '10px',
@@ -88,19 +102,28 @@ module.exports = act.cl({
             'justify-content': 'center'
           }
         },
-        act.el(Text, {
+        act.el(Link, {
           style: {
-            padding: '7px',
-            width: '150px',
+            width: '200px',
+            padding: '5px 0',
+            margin: 0,
+            'background-color': 'white',
+            'border': 'none',
+            'border-radius': 0,
             'border-right': '1px solid'
           },
+          to: 'home',
           value: 'Recent'
         }),
-        act.el(Text, {
+        act.el(Link, {
           style: {
-            width: '150px',
-            padding: '7px'
+            width: '200px',
+            padding: '5px 0',
+            margin: 0,
+            'border-radius': 0,
+            'border': 'none'
           },
+          to: 'council',
           value: 'Answer'
         })
       ),
