@@ -4,12 +4,11 @@ var act = require('lib/act');
 var styler = require('lib/styler');
 
 module.exports = act.cl({
-  mixins: [styler],
 
   render: function() {
     var styles = {
       fontFamily: '\'Raleway\', Open sans',
-      fontSize: this.props.ws.ww / 40,
+      'font-size': '20px',
       margin: 0,
       padding: 0,
 
@@ -23,7 +22,7 @@ module.exports = act.cl({
 
     return act.el(
       'p',
-      {style: this.buildStyles(styles)},
+      {style: styler(styles)},
       this.props.value
     );
   }

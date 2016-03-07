@@ -1,5 +1,5 @@
 'use strict';
 
-var Radium = require('radium');
-
-module.exports = Radium.StyleResolverMixin;
+module.exports = function styler(styles) {
+  return styles;
+};

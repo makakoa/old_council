@@ -80,5 +80,6 @@
     "white"         : false,    // true: Check against strict whitespace and indentation rules
 
     // Custom Globals
+    "globals": {"Text": true}, //not sure why is thinks Text is taken
     "predef"        : ["require", "angular", "ionic", "-Promise"]       // additional predefined global variables
 }

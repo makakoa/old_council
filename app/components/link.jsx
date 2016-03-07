@@ -1,29 +1,26 @@
 'use strict';
 
-var React = require('react');
-var Router = require('react-router');
+var act = require('lib/act');
+var _ = require('lodash');
+var Link = require('react-router').Link;
 
-var Link = Router.Link;
 var Button = require('./button');
 
-module.exports = React.createClass({
+module.exports = act.cl({
   render: function() {
-    var linkCb;
-    if (!this.props.linkCb) {
-      linkCb = function() {
-        console.log('Routing to ' + this.props.to);
-      }
-    } else {
-      linkCb = this.props.linkCb;
-    }
-    return (
-      <Link to={this.props.to}>
-        <Button
-          kind='link'
-          buttonCallback={linkCb}
-          {...this.props}
-          value={this.props.value}/>
-      </Link>
-    );
+    var linkCb = this.props.linkCb
+          ? this.props.linkCb
+          : function() {
+            console.log('Routing to ' + this.props.to);
+          };
+    return act.el(
+      Link,
+      {to: this.props.to},
+      act.el(
+        Button,
+        _.extend({
+          kind: 'link',
+          buttonCallback: linkCb
+        }, this.props)));
   }
 });
