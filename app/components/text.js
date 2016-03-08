@@ -10,7 +10,7 @@ module.exports = act.cl({
       {
         style: styler({
           'font-family': '\'Raleway\', Open Sans',
-          'font-size': '20px',
+          'font-size': '14px',
           margin: 0,
           padding: 0
         }, this.props.style)

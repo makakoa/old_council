@@ -16,36 +16,6 @@ module.exports = act.cl({
   },
 
   render: function() {
-    var styles = {
-      'font-family': '\'Raleway\', Open sans',
-      'font-size': '20px',
-      border: '1px solid',
-      borderRadius: '5px',
-      cursor: 'pointer',
-      margin: '5px',
-      padding: '10px'
-
-      // modifiers: [
-      //   {kind: {
-      //     link: {
-      //       background: '#b3b3b3'
-      //     },
-      //     danger: {
-      //       background: '#f74a57',
-      //       color: '#fff',
-      //       fontSize: this.props.ws.ww/75
-      //     },
-      //     ask: {
-      //       background: '#8aff8e',
-      //       fontSize: this.props.ws.ww/25
-      //     },
-      //     add: {
-      //       border: 0,
-      //       background: 'none'
-      //     }
-      //   }}
-      // ]
-    };
     return act.el(
       'button',
       _.extend({
@@ -53,7 +23,15 @@ module.exports = act.cl({
         key: this.props.index,
         type: 'button',
         ref: 'theButton',
-        style: styler(styles, this.props.style),
+        style: styler({
+          fontFamily: '\'Raleway\', Open sans',
+          fontSize: '14px',
+          border: '1px solid',
+          borderRadius: '5px',
+          cursor: 'pointer',
+          margin: '5px',
+          padding: '10px'
+        }, this.props.style),
         onClick: this.handleButtonClick
       }),
       this.props.value

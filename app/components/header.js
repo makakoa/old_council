@@ -9,7 +9,7 @@ module.exports = act.cl({
   render: function render() {
     var styles = {
       'font-family': '\'Raleway\', Open sans',
-      'font-size': '30px',
+      'font-size': '20px',
       'font-weight': 'bold',
       margin: 0,
       padding: 0

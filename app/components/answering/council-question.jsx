@@ -1,49 +1,51 @@
 'use strict';
 
-var React = require('react');
-var Radium = require('radium');
+var _ = require('lodash');
+var act = require('lib/act');
+var styler = require('lib/styler');
 
-var Option = require('./council-question-options');
+var Choice = require('./council-question-options');
 var Text = require('../text');
 
-module.exports = React.createClass({
+module.exports = act.cl({
   displayName: 'CouncilQuestion',
-  mixins: [Radium.StyleResolverMixin],
 
-  buildOptions: function(fields, index) {
-    return (
-      <Option
-        ws={this.props.ws}
-        _id={this.props._id}
-        index={index}
-        question={this.props.question}
-        value={fields.option}/>
-    );
+  buildChoiceList: function(fields, index) {
+    return act.el(Choice, {
+      ws: this.props.ws,
+      _id: this.props._id,
+      index: index,
+      question: this.props.question,
+      value: fields.option
+    });
   },
 
   render: function() {
-    var styles = {
-      background: '#FFFFF0',
-      border: '1px solid black',
-      width: this.props.ws.ww * 0.475,
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      marginTop: '5px',
-      padding: '10px'
-    };
+    var choices = _.map(this.props.options, this.buildChoiceList);
 
-    if (this.props.options.length) {
-      var options = this.props.options.map(this.buildOptions);
-    }
-
-    return (
-      <div className='CouncilQuestion'
-        style={this.buildStyles(styles)}>
-        <Text
-          value={this.props.prompt}
-          ws={this.props.ws}/>
-        {options}
-      </div>
+    return act.el(
+      'div',
+      {
+        className: 'CouncilQuestion',
+        style: styler({
+          display: 'flex',
+          flexDirection: 'column',
+          background: 'white',
+          border: '1px solid black',
+          borderRadius: '10px',
+          textAlign: 'left',
+          margin: '4px 4px',
+          padding: '10px'
+        })
+      },
+      act.el(Text, {
+        value: this.props.prompt,
+        style: styler({
+          margin: '4px 0',
+          fontSize: '16px'
+        })
+      }),
+      choices
     );
   }
 });

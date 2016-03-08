@@ -1,40 +1,62 @@
 'use strict';
 
+var _ = require('lodash');
 var act = require('lib/act');
 var styler = require('lib/styler');
+var CouncilActions = require('../../actions/council-actions');
+var CouncilStore = require('../../stores/council-store');
 
-var SocketStore = require('../stores/socket-store');
+var Link = require('../link');
+var Text = require('../text');
+var CouncilQuestion = require('./council-question');
 
-var Link = require('./link');
-var Text = require('./text');
-var Recent = require('./results/recent');
-
-function getOnlineCount() {
-  return SocketStore.getOnline();
-}
+var getQuestions = function() {
+  return CouncilStore.getQuestions();
+};
 
 module.exports = act.cl({
-  displayName: 'Home',
+  displayName: 'Council',
+  mixins: [CouncilStore.mixin],
 
   getInitialState: function() {
+    CouncilActions.loadQuestions();
     return {
-      online: getOnlineCount()
+      questions: []
     };
   },
 
   storeDidChange: function() {
     this.setState({
-      online: getOnlineCount()
+      questions: getQuestions()
+    });
+  },
+
+  buildList: function(fields, index) {
+    return act.el(CouncilQuestion, {
+      question: index,
+      index: index,
+      _id: fields._id,
+      ws: this.props.ws,
+      prompt: fields.prompt,
+      options: fields.options
     });
   },
 
   render: function() {
-    // var online = 'Online: ' + this.state.online;
+
+    var list = this.state.questions.length
+          ? _.map(this.state.questions, this.buildList)
+          : act.el(Text, {
+            value: 'Waiting on questions...',
+            style: {
+              color: 'white'
+            }
+          });
 
     return act.el(
-      'home',
+      'div',
       {
-        className: 'Home',
+        className: 'Council',
         style: styler({
           'max-width': '700px',
           'margin': '0 auto',
@@ -104,12 +126,12 @@ module.exports = act.cl({
             'justify-content': 'center'
           }
         },
+
         act.el(Link, {
           style: {
             width: '120px',
             padding: '5px 0',
             margin: 0,
-            'background-color': 'white',
             'border': 'none',
             'border-radius': 0,
             'border-right': '1px solid'
@@ -117,11 +139,13 @@ module.exports = act.cl({
           to: 'home',
           value: 'Recent'
         }),
+
         act.el(Link, {
           style: {
             width: '120px',
             padding: '5px 0',
             margin: 0,
+            'background-color': 'white',
             'border-radius': 0,
             'border': 'none'
           },
@@ -130,37 +154,11 @@ module.exports = act.cl({
         })
       ),
 
-      // act.el(
-      //   link,
-      //   {
-      //     to: 'council',
-      //     value: 'Advise',
-      //     ws: this.props.ws
-      //   }),
-      // act.el('br'),
-      // act.el('br'),
-
-      // act.el(
-      //   link,
-      //   {
-      //     to: 'about',
-      //     value: 'What is this?',
-      //     ws: this.props.ws
-      //   }),
-      // act.el('br'),
-      // act.el('br'),
-
-      // act.el(
-      //   text,
-      //   {
-      //     ws: this.props.ws,
-      //     value: online
-      //   }),
-
-      act.el(Recent, {
-        style: {
-          width: '100%'
-        }
-      }));
+      act.el(
+        'div',
+        {style: styler({width: '100%'})},
+        list
+      )
+    );
   }
 });

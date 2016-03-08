@@ -6,7 +6,6 @@ var styler = require('lib/styler');
 
 // var OptionResult = require('./option-result');
 var Text = require('../text');
-var Header = require('../header');
 
 module.exports = act.cl({
   displayName: 'Result',
@@ -23,7 +22,7 @@ module.exports = act.cl({
         Text, {
           value: fields.option,
           style: fields.result === 'won' ? {
-            'border-bottom': '1px solid'
+            borderBottom: '1px solid'
           } : {
             color: 'gray'
           }
@@ -32,15 +31,6 @@ module.exports = act.cl({
   },
 
   render: function() {
-    var styles = {
-      display: 'block',
-      background: '#FFFFF0',
-      border: '1px solid black',
-      'border-radius': '10px',
-      'text-align': 'left',
-      margin: '8px 20px',
-      padding: '10px 20px'
-    };
 
     var options = [];
     if (this.props.options) options = this.props.options;
@@ -48,8 +38,21 @@ module.exports = act.cl({
 
     return act.el(
       'result',
-      {style: styler(styles)},
-      act.el(Header, {value: this.props.prompt}),
+      {style: styler({
+        display: 'block',
+        background: 'white',
+        border: '1px solid black',
+        borderRadius: '10px',
+        textAlign: 'left',
+        margin: '4px 4px',
+        padding: '5px 10px'
+      })},
+      act.el(Text, {
+        value: this.props.prompt,
+        style: {
+          fontSize: '16px'
+        }
+      }),
       optionsResults
     );
   }
