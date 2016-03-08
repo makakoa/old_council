@@ -1,12 +1,10 @@
 'use strict';
 
-var React = require('react');
-var Radium = require('radium');
+var act = require('lib/act');
+var styler = require('lib/styler');
 
-module.exports = React.createClass({
+module.exports = act.cl({
   displayName: 'Input',
-  propTypes: {},
-  mixins: [Radium.StyleResolverMixin, Radium.BrowserStateMixin],
 
   handleInputChange: function() {
     this.props.inputCallback({
@@ -18,39 +16,20 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var styles = {
-      fontFamily: '\'Raleway\', Open sans',
-      fontSize: this.props.ws.ww / 50,
-      margin: '5px',
-      padding: '5px',
-      borderRadius: '5px',
 
-      states: [
-      {focus: {
-        background: 'white',
-        boxShadow: '0 0 0 2px #CCCCFF'
-      }}
-      ],
-
-      modifiers: [
-      {kind: {
-        question: {
-          width: this.props.ws.ww/3,
-          fontSize: this.props.ws.ww/40
-        }
-      }}
-      ]
-    }
-    return (
-      <input
-        _id={this.props._id}
-        type='text'
-        ref='inputValue'
-        value={this.props.value}
-        placeholder={this.props.placeholder}
-        {...this.getBrowserStateEvents()}
-        style={this.buildStyles(styles)}
-        onChange={this.handleInputChange} />
-    );
+    return act.el('input', {
+      _id: this.props._id,
+      type: 'text',
+      ref: 'inputValue',
+      placeholder: this.props.placeholder,
+      style: styler({
+        fontFamily: '\'Raleway\', Open sans',
+        border: 'none',
+        margin: '5px',
+        padding: '5px',
+        borderRadius: '5px'
+      }, this.props.style),
+      onChange: this.handleInputChange
+    });
   }
 });

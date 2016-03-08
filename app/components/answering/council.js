@@ -3,12 +3,13 @@
 var _ = require('lodash');
 var act = require('lib/act');
 var styler = require('lib/styler');
-var CouncilActions = require('../../actions/council-actions');
-var CouncilStore = require('../../stores/council-store');
 
-var Link = require('../link');
-var Text = require('../text');
-var CouncilQuestion = require('./council-question');
+var CouncilActions = require('actions/council-actions');
+var CouncilStore = require('stores/council-store');
+
+var Link = require('components/link');
+var Text = require('components/text');
+var CouncilQuestion = require('./council_question');
 
 var getQuestions = function() {
   return CouncilStore.getQuestions();
@@ -31,7 +32,7 @@ module.exports = act.cl({
     });
   },
 
-  buildList: function(fields, index) {
+  buildQuestion: function(fields, index) {
     return act.el(CouncilQuestion, {
       question: index,
       index: index,
@@ -45,7 +46,7 @@ module.exports = act.cl({
   render: function() {
 
     var list = this.state.questions.length
-          ? _.map(this.state.questions, this.buildList)
+          ? _.map(this.state.questions, this.buildQuestion)
           : act.el(Text, {
             value: 'Waiting on questions...',
             style: {

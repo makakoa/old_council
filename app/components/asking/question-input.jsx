@@ -1,11 +1,13 @@
 'use strict';
 
-var React = require('react');
-var QuestionActions = require('../../actions/question-actions');
+var act = require('lib/act');
+var styler = require('lib/styler');
 
-var Input = require('../input');
+var QuestionActions = require('actions/question-actions');
 
-module.exports = React.createClass({
+var Input = require('components/input');
+
+module.exports = act.cl({
   displayName: 'QuestionInput',
 
   getInitialState: function() {
@@ -26,14 +28,15 @@ module.exports = React.createClass({
   render: function() {
     var value = this.state.value || this.props.value;
 
-    return (
-      <Input
-        ws={this.props.ws}
-        value={value}
-        kind='question'
-        ref='input'
-        placeholder='Question'
-        inputCallback={this.handleChange} />
-    );
+    return act.el(Input, {
+      style: styler({
+        padding: '10px',
+        flexGrow: 1
+      }),
+      value: value,
+      ref: 'input',
+      placeholder: 'Question',
+      inputCallback: this.handleChange
+    });
   }
 });

@@ -4,7 +4,7 @@ var _ = require('lodash');
 var act = require('lib/act');
 var styler = require('lib/styler');
 
-var Choice = require('./council-question-options');
+var Choice = require('./council_choice');
 var Text = require('../text');
 
 module.exports = act.cl({

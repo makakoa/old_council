@@ -1,20 +1,21 @@
 'use strict';
 
-var React = require('react');
-var Radium = require('radium');
+var _ = require('lodash');
+var act = require('lib/act');
+var styler = require('lib/styler');
+var color = require('lib/color');
 
-var QuestionActions = require('../../actions/question-actions');
+var QuestionActions = require('actions/question-actions');
 
 var QuestionInput = require('./question-input');
 var OptionInput = require('./option-input');
-var Button = require('../button');
+var Button = require('components/button');
 
-module.exports = React.createClass({
+module.exports = act.cl({
   dipslayName: 'AskForm',
-  mixins: [Radium.StyleResolverMixin],
 
   addOption: function() {
-    QuestionActions.createOption();
+    return QuestionActions.createOption();
   },
 
   deleteOption: function(data) {
@@ -22,48 +23,69 @@ module.exports = React.createClass({
   },
 
   buildOptions: function(fields, index) {
-    return (
-      <div className='Option'
-        {...this.props}>
-        <Button
-          buttonCallback={this.deleteOption}
-          index={index}
-          kind='danger'
-          value='X'
-          ws={this.props.ws}/>
-        <OptionInput
-          _id={this.props._id}
-          key={index}
-          index={index}
-          placeholder='Option'
-          value={fields.option}
-          ws={this.props.ws}/>
-      </div>
+    return act.el(
+      'div',
+      _.extend({
+        className: 'Option',
+        style: styler({
+          display: 'flex',
+          alignItems: 'center'
+        })
+      }, this.props),
+      act.el(Button, {
+        buttonCallback: this.deleteOption,
+        index: index,
+        style: ({
+          margin: '0 5px',
+          padding: 0,
+          lineHeight: '18px',
+          fontSize: '18px',
+          fontWeiht: 'bold',
+          width: '20px',
+          height: '20px',
+          color: 'white',
+          backgroundColor: color.red,
+          border: 'none',
+          borderRadius: '50%'
+        }),
+        value: '-'
+      }),
+      act.el(OptionInput, {
+        _id: this.props._id,
+        key: index,
+        value: fields.option
+      })
     );
   },
 
   render: function() {
     var OptionNodes = this.props.options.map(this.buildOptions);
 
-    var addOptionStyle = {
-        'padding': '5px',
-        'border-radius' :'5%',
-        'background-color': 'white'
-    };
+    return act.el(
+      'div',
+      {
+        className: 'askForm',
+        style: styler({
+          display: 'flex',
+          flexDirection: 'column'
+        })
+      },
 
-    return (
-      <div className='AskForm'>
-        <QuestionInput
-          value={this.props.prompt}
-          ws={this.props.ws}/>
-        {OptionNodes}
-        <Button
-          buttonCallback={this.addOption}
-          value='add option'
-          style={this.buildStyles(addOptionStyle)}
-          kind='add'
-          ws={this.props.ws}/>
-      </div>
-    )
+      act.el(QuestionInput, {
+        value: this.props.prompt
+      }),
+
+      OptionNodes,
+
+      act.el(Button, {
+        buttonCallback: this.addOption,
+        value: 'Add option',
+        style: styler({
+          'padding': '5px',
+          'border-radius' :'5px',
+          'background-color': 'white'
+        })
+      })
+    );
   }
 });
