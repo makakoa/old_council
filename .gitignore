@@ -2,5 +2,7 @@ node_modules
 *.min.js
 npm-debug.log
 **/*.sw?
+**/#.*
 **/*bundle.js
 .projectile
+.DS_Store

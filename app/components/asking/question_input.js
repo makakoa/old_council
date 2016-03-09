@@ -31,6 +31,7 @@ module.exports = act.cl({
     return act.el(Input, {
       style: styler({
         padding: '10px',
+        margin: '5px 0',
         flexGrow: 1
       }),
       value: value,

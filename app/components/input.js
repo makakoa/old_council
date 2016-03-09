@@ -25,8 +25,6 @@ module.exports = act.cl({
       style: styler({
         fontFamily: '\'Raleway\', Open sans',
         border: 'none',
-        margin: '5px',
-        padding: '5px',
         borderRadius: '5px'
       }, this.props.style),
       onChange: this.handleInputChange

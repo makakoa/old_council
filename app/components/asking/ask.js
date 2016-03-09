@@ -3,6 +3,7 @@
 var act = require('lib/act');
 var styler = require('lib/styler');
 var uuid = require('uuid');
+var color = require('lib/color');
 
 var QuestionStore = require('stores/question-store');
 var QuestionActions = require('actions/question-actions');
@@ -59,7 +60,7 @@ module.exports = act.cl({
       act.el(Text, {
         value: 'Present your situation',
         style: styler({
-          margin: '0 auto',
+          margin: '20px auto',
           fontSize: '20px'
         })
       }),
@@ -70,14 +71,20 @@ module.exports = act.cl({
         options: this.state.options
       }),
 
-      act.el(Link, {
-        to: 'results',
-        linkCb: this.askQuestion,
-        style: styler({
-          margin: '0 5px'
-        }),
-        value: 'Ask'
-      })
+        act.el(Link, {
+          to: 'results',
+          linkCb: this.askQuestion,
+          style: styler({
+            fontSize: '18px',
+            backgroundColor: color.green,
+            margin: '10px',
+            padding: '10px',
+            display: 'flex',
+            justifyContent: 'center',
+            borderRadius: '6px'
+          }),
+          value: 'Ask'
+        })
 
       // act.el(Link, {
       //   to: 'home',

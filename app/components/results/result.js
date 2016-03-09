@@ -42,9 +42,9 @@ module.exports = act.cl({
         display: 'block',
         background: 'white',
         border: '1px solid black',
-        borderRadius: '10px',
+        borderRadius: '4px',
         textAlign: 'left',
-        margin: '4px 4px',
+        margin: '4px 0',
         padding: '5px 10px'
       })},
       act.el(Text, {

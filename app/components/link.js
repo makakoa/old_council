@@ -1,26 +1,33 @@
 'use strict';
 
 var act = require('lib/act');
-var _ = require('lodash');
+var styler = require('lib/styler');
+
 var Link = require('react-router').Link;
 
-var Button = require('./button');
-
 module.exports = act.cl({
+
+  handleClick: function() {
+    console.log('Routing to ' + this.props.to);
+    if (this.props.linkCb) this.props.linkCb();
+  },
+
   render: function() {
-    var linkCb = this.props.linkCb
-          ? this.props.linkCb
-          : function() {
-            console.log('Routing to ' + this.props.to);
-          };
+
     return act.el(
       Link,
-      {to: this.props.to},
-      act.el(
-        Button,
-        _.extend({
-          kind: 'link',
-          buttonCallback: linkCb
-        }, this.props)));
+      {
+        to: this.props.to,
+        style: styler({
+          color: 'black',
+          fontFamily: '\'Raleway\', Open sans',
+          fontSize: '14px',
+          cursor: 'pointer',
+          textDecoration: 'none'
+        }, this.props.style),
+        onClick: this.handleClick
+      },
+      this.props.value
+    );
   }
 });

@@ -64,8 +64,9 @@ module.exports = act.cl({
     return act.el(
       'div',
       {
-        className: 'askForm',
+        className: 'questionForm',
         style: styler({
+          padding: '0 10px',
           display: 'flex',
           flexDirection: 'column'
         })

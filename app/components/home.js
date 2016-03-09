@@ -79,9 +79,6 @@ module.exports = act.cl({
           style: {
             fontSize: '15px',
             color: '#cceaff',
-            width: '30px',
-            height: '30px',
-            background: 'none',
             padding: 0,
             margin: 0,
             border: 'none'
@@ -99,31 +96,33 @@ module.exports = act.cl({
             'margin': '10px 0',
             border: '1px solid',
             borderRadius: '5px',
-            'background-color': 'white',
             display: 'flex',
-            'justify-content': 'center'
+            justifyContent: 'center'
           }
         },
+
         act.el(Link, {
           style: {
             width: '120px',
             padding: '5px 0',
             margin: 0,
-            'background-color': 'white',
-            'border': 'none',
-            'border-radius': 0,
-            'border-right': '1px solid'
+            backgroundColor: 'white',
+            border: 'none',
+            borderRadius: 0,
+            borderRight: '1px solid'
           },
           to: 'home',
           value: 'Recent'
         }),
+
         act.el(Link, {
           style: {
             width: '120px',
             padding: '5px 0',
             margin: 0,
-            'border-radius': 0,
-            'border': 'none'
+            backgroundColor: 'gray',
+            borderRadius: 0,
+            border: 'none'
           },
           to: 'council',
           value: 'Answer'

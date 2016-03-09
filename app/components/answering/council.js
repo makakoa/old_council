@@ -119,12 +119,12 @@ module.exports = act.cl({
         'div', {
           style: {
             overflow: 'hidden',
-            'margin': '10px 0',
+            margin: '10px 0',
             border: '1px solid',
             borderRadius: '5px',
-            'background-color': 'white',
+            backgroundColor: 'white',
             display: 'flex',
-            'justify-content': 'center'
+            justifyContent: 'center'
           }
         },
 
@@ -133,9 +133,10 @@ module.exports = act.cl({
             width: '120px',
             padding: '5px 0',
             margin: 0,
-            'border': 'none',
-            'border-radius': 0,
-            'border-right': '1px solid'
+            backgroundColor: 'gray',
+            border: 'none',
+            borderRadius: 0,
+            borderRight: '1px solid'
           },
           to: 'home',
           value: 'Recent'
@@ -146,9 +147,9 @@ module.exports = act.cl({
             width: '120px',
             padding: '5px 0',
             margin: 0,
-            'background-color': 'white',
-            'border-radius': 0,
-            'border': 'none'
+            backgroundColor: 'white',
+            borderRadius: 0,
+            border: 'none'
           },
           to: 'council',
           value: 'Answer'
