@@ -102,8 +102,6 @@ module.exports = act.cl({
           style: {
             fontSize: '15px',
             color: '#cceaff',
-            width: '30px',
-            height: '30px',
             background: 'none',
             padding: 0,
             margin: 0,
