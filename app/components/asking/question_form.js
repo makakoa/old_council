@@ -7,12 +7,12 @@ var color = require('lib/color');
 
 var QuestionActions = require('actions/question-actions');
 
-var QuestionInput = require('./question-input');
-var OptionInput = require('./option-input');
+var QuestionInput = require('./question_input');
+var OptionInput = require('./option_input');
 var Button = require('components/button');
 
 module.exports = act.cl({
-  dipslayName: 'AskForm',
+  dipslayName: 'QuestionForm',
 
   addOption: function() {
     return QuestionActions.createOption();

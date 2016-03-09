@@ -9,7 +9,7 @@ var QuestionActions = require('actions/question-actions');
 
 var Text = require('components/text');
 var Link = require('components/link');
-var AskForm = require('./ask-form');
+var QuestionForm = require('./question_form');
 
 var getState = QuestionStore.getQuestion;
 
@@ -64,7 +64,7 @@ module.exports = act.cl({
         })
       }),
 
-      act.el(AskForm, {
+      act.el(QuestionForm, {
         _id: this.state._id,
         questin: this.state.question,
         options: this.state.options
@@ -74,6 +74,7 @@ module.exports = act.cl({
         to: 'results',
         linkCb: this.askQuestion,
         style: styler({
+          margin: '0 5px'
         }),
         value: 'Ask'
       })
