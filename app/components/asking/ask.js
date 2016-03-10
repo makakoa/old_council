@@ -60,31 +60,31 @@ module.exports = act.cl({
       act.el(Text, {
         value: 'Present your situation',
         style: styler({
-          margin: '20px auto',
+          textAlign: 'center',
+          margin: '20px 0',
           fontSize: '20px'
         })
       }),
 
       act.el(QuestionForm, {
         _id: this.state._id,
-        questin: this.state.question,
+        question: this.state.prompt,
         options: this.state.options
       }),
 
-        act.el(Link, {
-          to: 'results',
-          linkCb: this.askQuestion,
-          style: styler({
-            fontSize: '18px',
-            backgroundColor: color.green,
-            margin: '10px',
-            padding: '10px',
-            display: 'flex',
-            justifyContent: 'center',
-            borderRadius: '6px'
-          }),
-          value: 'Ask'
-        })
+      act.el(Link, {
+        to: 'results',
+        linkCb: this.askQuestion,
+        style: styler({
+          margin: '20px 10px 0',
+          backgroundColor: color.green,
+          padding: '10px',
+          display: 'flex',
+          justifyContent: 'center',
+          borderRadius: '6px'
+        }),
+        value: 'Ask'
+      })
 
       // act.el(Link, {
       //   to: 'home',

@@ -11,13 +11,12 @@ module.exports = act.cl({
   displayName: 'OptionInput',
 
   getInitialState: function() {
-    return {
-      value: null
-    };
+    return {};
   },
 
   handleChange: function() {
     var newValue = this.refs.input.getDOMNode().value;
+
     QuestionActions.updateOption({
       _id: this.props._id,
       index: this.props.index,
@@ -33,7 +32,7 @@ module.exports = act.cl({
         padding: '10px',
         margin: '5px 0',
         flexGrow: 1
-      }),
+      }, this.props.style),
       value: value,
       ref: 'input',
       placeholder: 'Option',

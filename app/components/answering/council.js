@@ -37,7 +37,6 @@ module.exports = act.cl({
       question: index,
       index: index,
       _id: fields._id,
-      ws: this.props.ws,
       prompt: fields.prompt,
       options: fields.options
     });
@@ -108,8 +107,7 @@ module.exports = act.cl({
             border: 'none'
           },
           to: 'ask',
-          value: 'Ask',
-          ws: this.props.ws
+          value: 'Ask'
         })
       ),
 

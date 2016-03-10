@@ -12,7 +12,6 @@ module.exports = act.cl({
 
   buildChoiceList: function(fields, index) {
     return act.el(Choice, {
-      ws: this.props.ws,
       _id: this.props._id,
       index: index,
       question: this.props.question,

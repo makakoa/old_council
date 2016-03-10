@@ -86,7 +86,8 @@ module.exports = act.cl({
         value: header,
         style: styler({
           fontSize: '20px',
-          margin: '20px auto'
+          textAlign: 'center',
+          margin: '20px 0'
         })
       }),
 
@@ -115,7 +116,8 @@ module.exports = act.cl({
         value: 'Recently asked questions',
         style: styler({
           fontSize: '16px',
-          margin: '20px auto 10px'
+          textAlign: 'center',
+          margin: '20px 0 10px'
         })
       }),
 

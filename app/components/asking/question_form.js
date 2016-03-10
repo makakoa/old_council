@@ -23,11 +23,13 @@ module.exports = act.cl({
   },
 
   buildOptions: function(fields, index) {
+
     return act.el(
       'div',
       _.extend({
         className: 'Option',
         style: styler({
+          margin: '10px 0 0',
           display: 'flex',
           alignItems: 'center'
         })
@@ -52,7 +54,10 @@ module.exports = act.cl({
       }),
       act.el(OptionInput, {
         _id: this.props._id,
-        key: index,
+        index: index,
+        style: styler({
+          margin: '0'
+        }),
         value: fields.option
       })
     );
@@ -66,7 +71,7 @@ module.exports = act.cl({
       {
         className: 'questionForm',
         style: styler({
-          padding: '0 10px',
+          margin: '0 10px',
           display: 'flex',
           flexDirection: 'column'
         })
@@ -82,9 +87,10 @@ module.exports = act.cl({
         buttonCallback: this.addOption,
         value: 'Add option',
         style: styler({
-          'padding': '5px',
-          'border-radius' :'5px',
-          'background-color': 'white'
+          'padding': '10px',
+          margin: '10px 0 0',
+          borderRadius :'5px',
+          backgroundColor: 'white'
         })
       })
     );

@@ -5,7 +5,7 @@ var act = require('lib/act');
 var Router = require('react-router');
 
 //Import components
-var App = require('components/app');
+var App = require('components/app_main');
 var Home = require('components/home');
 var About = require('components/about');
 var Ask = require('components/asking/ask');

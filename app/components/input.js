@@ -21,6 +21,7 @@ module.exports = act.cl({
       _id: this.props._id,
       type: 'text',
       ref: 'inputValue',
+      value: this.props.value,
       placeholder: this.props.placeholder,
       style: styler({
         fontFamily: '\'Raleway\', Open sans',
