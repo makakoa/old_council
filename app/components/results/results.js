@@ -6,10 +6,11 @@ var bs = require('lib/base_styles');
 
 var QuestionStore = require('stores/question-store');
 
+var Svg = require('components/svg');
 var Link = require('components/link');
 var Text = require('components/text');
 var Result = require('./result');
-var Recent = require('./recent');
+// var Recent = require('./recent');
 
 var getResults = QuestionStore.getResults;
 
@@ -82,9 +83,17 @@ module.exports = act.cl({
         })
       },
 
+      act.el(Svg, {
+        data: 'council.svg',
+        style: {
+          margin: '20% 0 0'
+        }
+      }),
+
       act.el(Text, {
         value: header,
         style: styler({
+          color: 'white',
           fontSize: '20px',
           textAlign: 'center',
           margin: '20px 0'
@@ -100,6 +109,7 @@ module.exports = act.cl({
         to: 'ask',
         value: 'Propose another question',
         style: styler(bs.button, {
+          margin: '20px 0 0',
           backgroundColor: 'white'
         })
       }),
@@ -108,20 +118,23 @@ module.exports = act.cl({
         to: 'home',
         value: 'Return to The Council',
         style: styler(bs.button, {
+          margin: '10px 0 0',
           backgroundColor: 'white'
         })
-      }),
+      })
 
-      act.el(Text, {
-        value: 'Recently asked questions',
-        style: styler({
-          fontSize: '16px',
-          textAlign: 'center',
-          margin: '20px 0 10px'
-        })
-      }),
+      // act.el(Text, {
+      //   value: 'Recently asked questions',
+      //   style: styler({
+      //     color: 'white',
+      //     fontSize: '16px',
+      //     textAlign: 'center',
+      //     margin: '20px 0 10px'
+      //   })
+      // }),
 
-      act.el(Recent)
+      // act.el(Recent)
+
     );
   }
 });

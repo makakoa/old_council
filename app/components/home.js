@@ -5,8 +5,9 @@ var styler = require('lib/styler');
 
 var SocketStore = require('../stores/socket-store');
 
+var TopNav = require('./top_nav');
 var Link = require('./link');
-var Text = require('./text');
+var Svg = require('./svg');
 var Recent = require('./results/recent');
 
 function getOnlineCount() {
@@ -47,47 +48,20 @@ module.exports = act.cl({
         })
       },
 
-      act.el(
-        'top',
-        {
-          style: styler({
-            width: '100%',
-            margin: '10px 0 0',
-            display: 'flex',
-            justifyContent: 'space-around',
-            alignItems: 'center'
-          })
-        },
-
-        act.el('div', { // left nav icon filler
-          style: {
-            width: '30px',
-            height: '30px'
-          }
-        }),
-
-        act.el(Text, {
-          style: {
-            margin: '5px 0 5px',
-            fontWeight: 'bold',
-            fontSize: '30px'
-          },
-          value: 'The Council'
-        }),
-
-        act.el(Link, {
+      act.el(TopNav, {
+        rightNavIcon: act.el(Link, {
           style: {
             fontSize: '15px',
-            color: '#cceaff',
+            width: '15px',
+            color: 'white',
             padding: 0,
             margin: 0,
             border: 'none'
           },
           to: 'ask',
-          value: 'Ask',
-          ws: this.props.ws
+          value: 'Ask'
         })
-      ),
+      }),
 
       act.el(
         'div', {

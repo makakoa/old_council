@@ -7,6 +7,8 @@ var styler = require('lib/styler');
 var CouncilActions = require('actions/council-actions');
 var CouncilStore = require('stores/council-store');
 
+var TopNav = require('components/top_nav');
+var Svg = require('components/svg');
 var Link = require('components/link');
 var Text = require('components/text');
 var CouncilQuestion = require('./council_question');
@@ -69,39 +71,12 @@ module.exports = act.cl({
         })
       },
 
-      act.el(
-        'top',
-        {
-          style: styler({
-            width: '100%',
-            margin: '10px 0 0',
-            display: 'flex',
-            justifyContent: 'space-around',
-            alignItems: 'center'
-          })
-        },
-
-        act.el('div', { // left nav icon filler
-          style: {
-            width: '30px',
-            height: '30px'
-          }
-        }),
-
-        act.el(Text, {
-          style: {
-            margin: '5px 0 5px',
-            fontWeight: 'bold',
-            fontSize: '30px'
-          },
-          value: 'The Council'
-        }),
-
-        act.el(Link, {
+      act.el(TopNav, {
+        rightNavIcon: act.el(Link, {
           style: {
             fontSize: '15px',
-            color: '#cceaff',
-            background: 'none',
+            width: '15px',
+            color: 'white',
             padding: 0,
             margin: 0,
             border: 'none'
@@ -109,7 +84,7 @@ module.exports = act.cl({
           to: 'ask',
           value: 'Ask'
         })
-      ),
+      }),
 
       act.el(
         'div', {

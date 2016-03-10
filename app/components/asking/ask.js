@@ -8,6 +8,8 @@ var color = require('lib/color');
 var QuestionStore = require('stores/question-store');
 var QuestionActions = require('actions/question-actions');
 
+var TopNav = require('components/top_nav');
+var Svg = require('components/svg');
 var Text = require('components/text');
 var Link = require('components/link');
 var QuestionForm = require('./question_form');
@@ -53,16 +55,27 @@ module.exports = act.cl({
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'stretch',
-          margin: '20px 0'
+          padding: '10px 0'
         })
       },
 
+      act.el(TopNav, {
+        leftNavIcon: act.el(Link, {
+          to: 'home',
+          value: 'Back',
+          style: styler({
+            color: 'white'
+          })
+        })
+      }),
+
       act.el(Text, {
-        value: 'Present your situation',
+        value: 'Present your situation.',
         style: styler({
+          color: 'white',
           textAlign: 'center',
-          margin: '20px 0',
-          fontSize: '20px'
+          margin: '0 0 10px',
+          fontSize: '16px'
         })
       }),
 
@@ -86,10 +99,6 @@ module.exports = act.cl({
         value: 'Ask'
       })
 
-      // act.el(Link, {
-      //   to: 'home',
-      //   value: 'Nevermind'
-      // })
     );
   }
 });
