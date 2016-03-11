@@ -35,7 +35,7 @@ module.exports = act.cl({
       navOpts: {
         rightNavIcon: act.el(Link, {
           style: {
-            fontSize: '15px',
+            fontSize: '16px',
             width: '15px',
             color: 'white',
             padding: 0,

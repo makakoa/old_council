@@ -24,7 +24,6 @@ module.exports = act.cl({
         type: 'button',
         ref: 'theButton',
         style: styler({
-          fontFamily: '\'Raleway\', Open sans',
           fontSize: '16px',
           border: '1px solid',
           borderRadius: '5px',

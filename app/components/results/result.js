@@ -15,29 +15,34 @@ module.exports = act.cl({
       'div',
       {
         key: index,
-        style: styler({
-          'margin-left': '20px'
+        style: _.extend({
+          display: 'flex',
+          justifyContent: 'space-between',
+          flexGrow: 1,
+          padding: '10px',
+          margin: '5px 5px 5px 20px',
+          border: '1px solid gray',
+          borderRadius: '2px',
+          backgroundColor: 'white'
+        }, fields.result === 'won' ? {
+          backgroundColor: color.green,
+          borderBottom: '1px solid'
+        } : {
+          color: 'gray'
         })
       },
-      act.el(
-        Text, {
-          value: fields.option,
-          style: _.extend({
-            display: 'flex',
-            flexGrow: 1,
-            padding: '10px',
-            margin: '5px',
-            border: '1px solid gray',
-            borderRadius: '2px',
-            backgroundColor: 'white'
-          }, fields.result === 'won' ? {
-            backgroundColor: color.green,
-            borderBottom: '1px solid'
-          } : {
-            color: 'gray'
-          })
+      act.el(Text, {
+        value: fields.option
+      }),
+      act.el(Text, {
+        value: Math.floor(Math.random() * 20) + ' votes',
+        style: {
+          fontFamily: 'Oxygen',
+          lineHeight: '20px',
+          color: 'gray'
         }
-      ));
+      })
+    );
   },
 
   render: function() {
@@ -49,17 +54,18 @@ module.exports = act.cl({
     return act.el(
       'result',
       {style: styler({
-        display: 'block',
+        display: 'flex',
+        flexDirection: 'column',
         background: 'white',
-        borderRadius: '4px',
+        border: '1px solid black',
+        borderRadius: '10px',
         textAlign: 'left',
-        margin: '4px 0',
-        padding: '5px 10px'
+        margin: '4px 4px',
+        padding: '10px'
       })},
       act.el(Text, {
         value: this.props.prompt,
         style: {
-          margin: '10px 0',
           fontSize: '16px'
         }
       }),

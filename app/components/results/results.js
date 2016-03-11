@@ -44,9 +44,13 @@ module.exports = act.cl({
     }
   },
 
+  stop: function() {
+    clearInterval(this.timer);
+  },
+
   storeDidChange: function() {
     if (QuestionStore.getResults()) {
-      clearInterval(this.timer);
+      this.stop();
       this.setState(getResults());
     }
   },
@@ -57,6 +61,7 @@ module.exports = act.cl({
     var seconds = (time/10).toFixed(1);
     var remaining = (30 - seconds);
     remaining = Math.max(remaining, 0).toFixed(1);
+    if (remaining < 0) this.stop();
 
     var header = '';
     var status = '';
