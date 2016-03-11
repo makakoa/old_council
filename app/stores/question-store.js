@@ -26,8 +26,8 @@ var QuestionStore = Flux.createStore({
   deleteOption: function(data) {
     QuestionStore.storeQuestion.options.splice(data, 1);
   },
-  questionAsked: function() {
-    QuestionStore.results = {};
+  questionAsked: function(data) {
+    QuestionStore.results = data;
   },
   questionAnswered: function(data) {
     QuestionStore.results = data;

@@ -6,6 +6,7 @@ var bs = require('lib/base_styles');
 
 var QuestionStore = require('stores/question-store');
 
+var NavPage = require('components/nav_page');
 var Svg = require('components/svg');
 var Link = require('components/link');
 var Text = require('components/text');
@@ -68,11 +69,13 @@ module.exports = act.cl({
 
     var options = [];
     if (this.state.options) options = this.state.options;
-    if (this.state.hasOwnProperty('prompt')){
+    if (this.state.hasOwnProperty('prompt')) {
       status = this.state.prompt;
     }
 
-    return act.el(
+    return act.el(NavPage, {
+      navOpts: {},
+      content: act.el(
       'div',
       {
         className: 'Results',
@@ -86,7 +89,7 @@ module.exports = act.cl({
       act.el(Svg, {
         data: 'council.svg',
         style: {
-          margin: '20% 0 0'
+          margin: '40px 0 0'
         }
       }),
 
@@ -135,6 +138,7 @@ module.exports = act.cl({
 
       // act.el(Recent)
 
-    );
+      )
+    });
   }
 });

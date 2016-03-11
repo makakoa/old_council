@@ -1,6 +1,6 @@
 'use strict';
 
-var env = process.env.NODE_ENV;
+var env = process.env.NODE_ENV || 'dev';
 console.log('Env: ', env);
 
 module.exports = {
@@ -10,4 +10,4 @@ module.exports = {
   production: {
     apiUrl: 'https://thecouncil.herokuapp.com'
   }
-}[process.env.NODE_ENV || 'dev'];
+}[env];

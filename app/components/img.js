@@ -5,10 +5,9 @@ var styler = require('lib/styler');
 
 module.exports = act.cl({
   render: function() {
-    return act.el('object', {
-      type: 'image/svg+xml',
+    return act.el('img', {
       style: styler(this.props.style),
-      data: this.props.data
+      src: this.props.src
     });
   }
 });

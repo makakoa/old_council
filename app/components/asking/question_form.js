@@ -88,6 +88,7 @@ module.exports = act.cl({
         value: 'Add option',
         style: styler({
           'padding': '10px',
+          border: 'none',
           margin: '10px 0 0',
           borderRadius :'5px',
           backgroundColor: 'white'

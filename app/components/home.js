@@ -5,9 +5,8 @@ var styler = require('lib/styler');
 
 var SocketStore = require('../stores/socket-store');
 
-var TopNav = require('./top_nav');
+var NavPage = require('components/nav_page');
 var Link = require('./link');
-var Svg = require('./svg');
 var Recent = require('./results/recent');
 
 function getOnlineCount() {
@@ -32,7 +31,22 @@ module.exports = act.cl({
   render: function() {
     // var online = 'Online: ' + this.state.online;
 
-    return act.el(
+    return act.el(NavPage, {
+      navOpts: {
+        rightNavIcon: act.el(Link, {
+          style: {
+            fontSize: '15px',
+            width: '15px',
+            color: 'white',
+            padding: 0,
+            margin: 0,
+            border: 'none'
+          },
+          to: 'ask',
+          value: 'Ask'
+        })
+      },
+      content: act.el(
       'home',
       {
         className: 'Home',
@@ -48,27 +62,12 @@ module.exports = act.cl({
         })
       },
 
-      act.el(TopNav, {
-        rightNavIcon: act.el(Link, {
-          style: {
-            fontSize: '15px',
-            width: '15px',
-            color: 'white',
-            padding: 0,
-            margin: 0,
-            border: 'none'
-          },
-          to: 'ask',
-          value: 'Ask'
-        })
-      }),
-
       act.el(
         'div', {
           style: {
             overflow: 'hidden',
             'margin': '10px 0',
-            border: '1px solid',
+            // border: '1px solid',
             borderRadius: '5px',
             display: 'flex',
             justifyContent: 'center'
@@ -82,8 +81,8 @@ module.exports = act.cl({
             margin: 0,
             backgroundColor: 'white',
             border: 'none',
-            borderRadius: 0,
-            borderRight: '1px solid'
+            borderRadius: 0
+            // borderRight: '1px solid'
           },
           to: 'home',
           value: 'Recent'
@@ -134,6 +133,8 @@ module.exports = act.cl({
         style: {
           width: '100%'
         }
-      }));
+      })
+      )
+    });
   }
 });

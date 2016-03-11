@@ -25,6 +25,7 @@ module.exports = act.cl({
       placeholder: this.props.placeholder,
       style: styler({
         fontFamily: '\'Raleway\', Open sans',
+        fontSize: '16px',
         border: 'none',
         borderRadius: '5px'
       }, this.props.style),

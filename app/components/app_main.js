@@ -1,7 +1,6 @@
 'use strict';
 
 var act = require('lib/act');
-var styler = require('lib/styler');
 
 var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
@@ -15,11 +14,7 @@ var App = act.cl({
 
     return act.el(
       'div',
-      {
-        className: 'appContainer',
-        style: styler({
-        })
-      },
+      {className: 'appContainer'},
       act.el(RouteHandler, this.props)
     );
   }

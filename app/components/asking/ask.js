@@ -8,8 +8,7 @@ var color = require('lib/color');
 var QuestionStore = require('stores/question-store');
 var QuestionActions = require('actions/question-actions');
 
-var TopNav = require('components/top_nav');
-var Svg = require('components/svg');
+var NavPage = require('components/nav_page');
 var Text = require('components/text');
 var Link = require('components/link');
 var QuestionForm = require('./question_form');
@@ -46,7 +45,17 @@ module.exports = act.cl({
 
   render: function() {
 
-    return act.el(
+    return act.el(NavPage, {
+      navOpts: {
+        leftNavIcon: act.el(Link, {
+          to: 'home',
+          value: 'Back',
+          style: styler({
+            color: 'white'
+          })
+        })
+      },
+      content: act.el(
       'div',
       {
         className: 'question',
@@ -59,23 +68,13 @@ module.exports = act.cl({
         })
       },
 
-      act.el(TopNav, {
-        leftNavIcon: act.el(Link, {
-          to: 'home',
-          value: 'Back',
-          style: styler({
-            color: 'white'
-          })
-        })
-      }),
-
       act.el(Text, {
         value: 'Present your situation.',
         style: styler({
           color: 'white',
           textAlign: 'center',
-          margin: '0 0 10px',
-          fontSize: '16px'
+          margin: '10px 0',
+          fontSize: '18px'
         })
       }),
 
@@ -99,6 +98,7 @@ module.exports = act.cl({
         value: 'Ask'
       })
 
-    );
+      )
+    });
   }
 });

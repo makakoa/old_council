@@ -6,3 +6,5 @@ npm-debug.log
 **/*bundle.js
 .projectile
 .DS_Store
+**/platforms
+**/plugins

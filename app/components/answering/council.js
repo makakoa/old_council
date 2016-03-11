@@ -7,8 +7,7 @@ var styler = require('lib/styler');
 var CouncilActions = require('actions/council-actions');
 var CouncilStore = require('stores/council-store');
 
-var TopNav = require('components/top_nav');
-var Svg = require('components/svg');
+var NavPage = require('components/nav_page');
 var Link = require('components/link');
 var Text = require('components/text');
 var CouncilQuestion = require('./council_question');
@@ -55,7 +54,22 @@ module.exports = act.cl({
             }
           });
 
-    return act.el(
+    return act.el(NavPage, {
+      navOpts: {
+        rightNavIcon: act.el(Link, {
+          style: {
+            fontSize: '16px',
+            width: '15px',
+            color: 'white',
+            padding: 0,
+            margin: 0,
+            border: 'none'
+          },
+          to: 'ask',
+          value: 'Ask'
+        })
+      },
+      content: act.el(
       'div',
       {
         className: 'Council',
@@ -71,27 +85,11 @@ module.exports = act.cl({
         })
       },
 
-      act.el(TopNav, {
-        rightNavIcon: act.el(Link, {
-          style: {
-            fontSize: '15px',
-            width: '15px',
-            color: 'white',
-            padding: 0,
-            margin: 0,
-            border: 'none'
-          },
-          to: 'ask',
-          value: 'Ask'
-        })
-      }),
-
       act.el(
         'div', {
           style: {
             overflow: 'hidden',
             margin: '10px 0',
-            border: '1px solid',
             borderRadius: '5px',
             backgroundColor: 'white',
             display: 'flex',
@@ -106,8 +104,7 @@ module.exports = act.cl({
             margin: 0,
             backgroundColor: 'gray',
             border: 'none',
-            borderRadius: 0,
-            borderRight: '1px solid'
+            borderRadius: 0
           },
           to: 'home',
           value: 'Recent'
@@ -132,6 +129,7 @@ module.exports = act.cl({
         {style: styler({width: '100%'})},
         list
       )
-    );
+      )
+    });
   }
 });

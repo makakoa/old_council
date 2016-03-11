@@ -41,7 +41,7 @@ module.exports = act.cl({
       {style: styler({
         display: 'block',
         background: 'white',
-        border: '1px solid black',
+        // border: '1px solid black',
         borderRadius: '4px',
         textAlign: 'left',
         margin: '4px 0',

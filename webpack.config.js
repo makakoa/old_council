@@ -1,10 +1,14 @@
 'use strict';
 
 var debug = process.env.NODE_ENV !== 'production';
+if (debug) console.log('-Running dev build-');
 var webpack = require('webpack');
 
 module.exports = {
   context: __dirname,
+  node: {
+    process: true
+  },
   devtool: debug ? 'inline-sourcemap' : null,
   entry: './app/app.js',
   output: {
@@ -35,6 +39,11 @@ module.exports = {
     ]
   },
   plugins: debug ? [] : [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': '"production"'
+      }
+    }),
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.DedupePlugin()
