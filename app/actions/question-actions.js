@@ -2,6 +2,7 @@
 
 'use strict';
 
+var _ = require('lodash');
 var Flux = require('../Flux');
 var socket = require('../socket');
 
@@ -41,6 +42,16 @@ var QuestionActions = Flux.createActions({
     };
   },
   askQuestion: function(data) {
+    //Todo: remove
+    var n = 0;
+    var vs = [];
+    _.each(data.options, function() {
+      n += Math.floor(Math.random() * 3);
+      vs.push(n);
+    });
+    data.votes = vs.reverse();
+    data.votes[0] += 1;
+
     socket.emit('question:submit', data);
     return {
       actionType: 'QUESTION_ASKED',

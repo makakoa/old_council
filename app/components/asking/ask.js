@@ -20,14 +20,10 @@ module.exports = act.cl({
   mixins: [QuestionStore.mixin],
 
   getInitialState: function() {
-    var a = Math.floor(Math.random() * 3); // Todo: remove this.
-    var b = Math.floor(Math.random() * 3);
-    var c = Math.floor(Math.random() * 3);
     var newQuestion = {
       _id: uuid.v4(),
       prompt: null,
       time: 30000,
-      votes: [a + b + c + 1, b + c, c],
       options: [{
         option: 'Yes'
       }, {
