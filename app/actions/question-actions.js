@@ -45,10 +45,12 @@ var QuestionActions = Flux.createActions({
     //Todo: remove
     var n = 0;
     var vs = [];
-    _.each(_.map(data.options, function() {
+    var nums = _.map(data.options, function() {
       n += Math.floor(Math.random() * 3);
       return n;
-    }), function(t) {
+    });
+    n = Math.min(n, 4);
+    _.each(nums, function(t) {
       t = Math.floor((t / n) * (30 / n));
       vs.push(t);
     });

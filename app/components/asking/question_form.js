@@ -41,8 +41,6 @@ module.exports = act.cl({
           margin: '0 5px',
           padding: 0,
           lineHeight: '18px',
-          fontSize: '18px',
-          fontWeiht: 'bold',
           width: '20px',
           height: '20px',
           color: 'white',

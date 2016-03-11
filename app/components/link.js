@@ -20,7 +20,7 @@ module.exports = act.cl({
         to: this.props.to,
         style: styler({
           color: 'black',
-          fontSize: '14px',
+          fontSize: '16px',
           cursor: 'pointer',
           textDecoration: 'none'
         }, this.props.style),
