@@ -19,7 +19,7 @@ module.exports = act.cl({
 
       act.el('div', {
         style: styler({
-          '-webkit-overflow-scrolling': 'touch',
+          WebkitOverflowScrolling: 'touch',
           margin: '65px 0 0'
         })
       }, this.props.content)

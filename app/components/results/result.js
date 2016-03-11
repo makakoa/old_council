@@ -4,16 +4,17 @@ var _ = require('lodash');
 var act = require('lib/act');
 var styler = require('lib/styler');
 
-// var OptionResult = require('./option-result');
+var color = require('lib/color');
 var Text = require('../text');
 
 module.exports = act.cl({
   displayName: 'Result',
 
-  buildResults: function(fields) {
+  buildResults: function(fields, index) {
     return act.el(
       'div',
       {
+        key: index,
         style: styler({
           'margin-left': '20px'
         })
@@ -21,11 +22,20 @@ module.exports = act.cl({
       act.el(
         Text, {
           value: fields.option,
-          style: fields.result === 'won' ? {
+          style: _.extend({
+            display: 'flex',
+            flexGrow: 1,
+            padding: '10px',
+            margin: '5px',
+            border: '1px solid gray',
+            borderRadius: '2px',
+            backgroundColor: 'white'
+          }, fields.result === 'won' ? {
+            backgroundColor: color.green,
             borderBottom: '1px solid'
           } : {
             color: 'gray'
-          }
+          })
         }
       ));
   },
@@ -41,7 +51,6 @@ module.exports = act.cl({
       {style: styler({
         display: 'block',
         background: 'white',
-        // border: '1px solid black',
         borderRadius: '4px',
         textAlign: 'left',
         margin: '4px 0',
@@ -50,6 +59,7 @@ module.exports = act.cl({
       act.el(Text, {
         value: this.props.prompt,
         style: {
+          margin: '10px 0',
           fontSize: '16px'
         }
       }),

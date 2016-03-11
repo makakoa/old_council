@@ -7,6 +7,7 @@ var bs = require('lib/base_styles');
 var QuestionStore = require('stores/question-store');
 
 var NavPage = require('components/nav_page');
+var ProgressBar = require('components/progress_bar');
 var Svg = require('components/svg');
 var Link = require('components/link');
 var Text = require('components/text');
@@ -76,67 +77,74 @@ module.exports = act.cl({
     return act.el(NavPage, {
       navOpts: {},
       content: act.el(
-      'div',
-      {
-        className: 'Results',
-        style: styler({
-          display: 'flex',
-          flexDirection: 'column',
-          padding: '10px'
+        'div',
+        {
+          className: 'Results',
+          style: styler({
+            display: 'flex',
+            flexDirection: 'column',
+            padding: '10px'
+          })
+        },
+
+        act.el(Svg, {
+          data: 'council.svg',
+          style: {
+            margin: '40px 0 0'
+          }
+        }),
+
+        act.el(Text, {
+          value: header,
+          style: styler({
+            color: 'white',
+            fontSize: '20px',
+            textAlign: 'center',
+            margin: '20px 0 0'
+          })
+        }),
+
+        act.el(ProgressBar, {
+          progress: (seconds / 30),
+          style: {
+            margin: '10px 0 20px'
+          }
+        }),
+
+        act.el(Result, {
+          prompt: status,
+          options: this.state.options
+        }),
+
+        act.el(Link, {
+          to: 'ask',
+          value: 'Propose another question',
+          style: styler(bs.button, {
+            margin: '20px 0 0',
+            backgroundColor: 'white'
+          })
+        }),
+
+        act.el(Link, {
+          to: 'home',
+          value: 'Return to The Council',
+          style: styler(bs.button, {
+            margin: '10px 0 0',
+            backgroundColor: 'white'
+          })
         })
-      },
 
-      act.el(Svg, {
-        data: 'council.svg',
-        style: {
-          margin: '40px 0 0'
-        }
-      }),
+        // act.el(Text, {
+        //   value: 'Recently asked questions',
+        //   style: styler({
+        //     color: 'white',
+        //     fontSize: '16px',
+        //     textAlign: 'center',
+        //     margin: '20px 0 10px'
+        //   })
+        // }),
 
-      act.el(Text, {
-        value: header,
-        style: styler({
-          color: 'white',
-          fontSize: '20px',
-          textAlign: 'center',
-          margin: '20px 0'
-        })
-      }),
-
-      act.el(Result, {
-        prompt: status,
-        options: this.state.options
-      }),
-
-      act.el(Link, {
-        to: 'ask',
-        value: 'Propose another question',
-        style: styler(bs.button, {
-          margin: '20px 0 0',
-          backgroundColor: 'white'
-        })
-      }),
-
-      act.el(Link, {
-        to: 'home',
-        value: 'Return to The Council',
-        style: styler(bs.button, {
-          margin: '10px 0 0',
-          backgroundColor: 'white'
-        })
-      })
-
-      // act.el(Text, {
-      //   value: 'Recently asked questions',
-      //   style: styler({
-      //     color: 'white',
-      //     fontSize: '16px',
-      //     textAlign: 'center',
-      //     margin: '20px 0 10px'
-      //   })
-      // }),
-
-      // act.el(Recent)
+        // act.el(Recent)
 
       )
     });
