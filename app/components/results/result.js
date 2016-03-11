@@ -34,14 +34,16 @@ module.exports = act.cl({
       act.el(Text, {
         value: fields.option
       }),
-      act.el(Text, {
-        value: Math.floor(Math.random() * 20) + ' votes',
-        style: {
-          fontFamily: 'Oxygen',
-          lineHeight: '20px',
-          color: 'gray'
-        }
-      })
+      this.props.votes
+        ? act.el(Text, {
+          value: this.props.votes[index] + ' votes',
+          style: {
+            fontFamily: 'Oxygen',
+            lineHeight: '20px',
+            color: 'gray'
+          }
+        })
+      : ''
     );
   },
 
@@ -57,10 +59,9 @@ module.exports = act.cl({
         display: 'flex',
         flexDirection: 'column',
         background: 'white',
-        border: '1px solid black',
-        borderRadius: '10px',
+        borderRadius: '7px',
         textAlign: 'left',
-        margin: '4px 4px',
+        margin: '10px 0',
         padding: '10px'
       })},
       act.el(Text, {

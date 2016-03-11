@@ -28,7 +28,7 @@ module.exports = act.cl({
   },
 
   componentDidMount: function() {
-    this.time = setInterval(this.tick, 50);
+    this.timer = setInterval(this.tick, 50);
   },
 
   componentWillUnmount: function() {
@@ -36,7 +36,7 @@ module.exports = act.cl({
   },
 
   tick: function() {
-    if (Date.now() - this.state.start > 30000) clearInterval(this.timer);
+    if (Date.now() - this.state.start > 30000) this.stop();
     if (this.isMounted()) {
       this.setState({
         time: Date.now() - this.state.start
@@ -45,7 +45,7 @@ module.exports = act.cl({
   },
 
   stop: function() {
-    clearInterval(this.timer);
+    window.clearInterval(this.timer);
   },
 
   storeDidChange: function() {
@@ -61,7 +61,6 @@ module.exports = act.cl({
     var seconds = (time/10).toFixed(1);
     var remaining = (30 - seconds);
     remaining = Math.max(remaining, 0).toFixed(1);
-    if (remaining < 0) this.stop();
 
     var header = '';
     var status = '';
@@ -112,12 +111,13 @@ module.exports = act.cl({
         act.el(ProgressBar, {
           progress: (seconds / 30),
           style: {
-            margin: '10px 0 20px'
+            margin: '10px 0'
           }
         }),
 
         act.el(Result, {
           prompt: status,
+          votes: this.state.votes,
           options: this.state.options
         }),
 
@@ -125,7 +125,7 @@ module.exports = act.cl({
           to: 'ask',
           value: 'Propose another question',
           style: styler(bs.button, {
-            margin: '20px 0 0',
+            margin: '10px 0 0',
             backgroundColor: 'white'
           })
         }),
@@ -138,18 +138,6 @@ module.exports = act.cl({
             backgroundColor: 'white'
           })
         })
-
-        // act.el(Text, {
-        //   value: 'Recently asked questions',
-        //   style: styler({
-        //     color: 'white',
-        //     fontSize: '16px',
-        //     textAlign: 'center',
-        //     margin: '20px 0 10px'
-        //   })
-        // }),
-
-        // act.el(Recent)
 
       )
     });

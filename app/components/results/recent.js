@@ -31,7 +31,7 @@ module.exports = act.cl({
   buildRecent: function(fields, index) {
     return act.el(Result, {
       key: index,
-      ws: this.props.ws,
+      votes: fields.votes,
       options: fields.options,
       prompt: fields.prompt
     });
