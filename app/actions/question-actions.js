@@ -45,9 +45,12 @@ var QuestionActions = Flux.createActions({
     //Todo: remove
     var n = 0;
     var vs = [];
-    _.each(data.options, function() {
+    _.each(_.map(data.options, function() {
       n += Math.floor(Math.random() * 3);
-      vs.push(n);
+      return n;
+    }), function(t) {
+      t = Math.floor((t / n) * (30 / n));
+      vs.push(t);
     });
     data.votes = vs.reverse();
     data.votes[0] += 1;
