@@ -4,8 +4,7 @@
   "description": "",
   "main": "",
   "scripts": {
-    "postinstall": "webpack",
-    "start": "node server/server.js"
+    "start": "make serve-production"
   },
   "engines": {
     "node": "5.0.0"
