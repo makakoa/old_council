@@ -62,6 +62,8 @@ module.exports = act.cl({
       {
         className: 'question',
         style: styler({
+          maxWidth: '700px',
+          'margin': '0 auto',
           width: '100%',
           display: 'flex',
           flexDirection: 'column',

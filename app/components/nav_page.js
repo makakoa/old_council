@@ -34,7 +34,6 @@ module.exports = act.cl({
 
       act.el('div', {
         style: styler({
-          maxWidth: '700px',
           overflow: 'scroll',
           WebkitOverflowScrolling: 'touch'
           // margin: navHeight + 'px 0',

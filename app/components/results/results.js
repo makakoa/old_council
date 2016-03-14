@@ -85,6 +85,8 @@ module.exports = act.cl({
         {
           className: 'Results',
           style: styler({
+            maxWidth: '700px',
+            'margin': '0 auto',
             display: 'flex',
             flexDirection: 'column',
             padding: '10px'
