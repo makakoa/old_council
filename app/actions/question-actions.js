@@ -7,6 +7,7 @@ var Flux = require('../Flux');
 var socket = require('../socket');
 
 socket.on('question:results', function(data) {
+  console.log("Question received: ", data);
   QuestionActions.questionAnswered(data);
 });
 

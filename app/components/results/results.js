@@ -134,7 +134,7 @@ module.exports = act.cl({
           to: 'home',
           value: 'Return to The Council',
           style: styler(bs.button, {
-            margin: '10px 0 0',
+            margin: '10px 0 30px',
             backgroundColor: 'white'
           })
         })
