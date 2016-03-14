@@ -13,3 +13,7 @@ serve-production:
 .PHONY: build-ios
 build-ios:
 	./scripts/build_ios.sh
+
+.PHONY: quick-ios
+quick-ios:
+	./scripts/quick_build_ios.sh

@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "express": "^4.12.1",
+    "fastclick": "^1.0.6",
     "jsx-loader": "^0.12.2",
     "mcfly": "0.0.10",
     "radium": "^0.9.1",

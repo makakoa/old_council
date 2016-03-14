@@ -16,14 +16,17 @@ module.exports = act.cl({
         style: styler({
           display: 'flex',
           flexDirection: 'column',
-          overflow: 'hidden'
-          // height: '100%'
+          overflow: 'hidden',
+          height: '100%'
         })
       },
 
       act.el(
         'div',
-        {style: {height: navHeight}},
+        {style: {
+          height: navHeight,
+          zIndex: 1
+        }},
         act.el(TopNav, _.extend({
           navHeight: navHeight
         }, this.props.navOpts))
@@ -31,8 +34,10 @@ module.exports = act.cl({
 
       act.el('div', {
         style: styler({
-          WebkitOverflowScrolling: 'touch',
-          height: 'calc(100% - ' + navHeight + 'px)'
+          overflow: 'scroll',
+          WebkitOverflowScrolling: 'touch'
+          // margin: navHeight + 'px 0',
+          // height: 'calc(100% - ' + navHeight + 'px)'
         })
       }, this.props.content)
     );
