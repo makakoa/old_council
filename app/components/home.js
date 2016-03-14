@@ -51,7 +51,7 @@ module.exports = act.cl({
       {
         className: 'Home',
         style: styler({
-          'max-width': '700px',
+          maxWidth: '700px',
           'margin': '0 auto',
           padding: '10px',
           textAlign: 'center',
