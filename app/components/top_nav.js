@@ -1,7 +1,6 @@
 'use strict';
 
 var act = require('lib/act');
-var styler = require('lib/styler');
 
 var Img = require('components/img');
 
@@ -10,23 +9,27 @@ module.exports = act.cl({
     return act.el(
       'top',
       {
-        style: styler({
+        style: {
           position: 'fixed',
           top: 0,
           left: 0,
           right: 0,
           width: '100%',
           display: 'flex',
-          padding: '30px 0 10px',
+          padding: '20px 0 0',
           backgroundColor: '#673ab7',
           borderBottom: '1px solid gray',
           justifyContent: 'space-around',
           alignItems: 'center'
-        })
+        }
       },
 
       act.el('left-nav-icon', {
-        style: {width: '15px'}
+        style: {
+          width: '44px',
+          height: '44px',
+          display: 'flex'
+        }
       }, this.props.leftNavIcon),
 
       this.props.content || act.el(Img, {
@@ -37,7 +40,11 @@ module.exports = act.cl({
       }),
 
       act.el('right-nav-icon', {
-        style: {width: '15px'}
+        style: {
+          width: '44px',
+          height: '44px',
+          display: 'flex'
+        }
       }, this.props.rightNavIcon)
     );
   }

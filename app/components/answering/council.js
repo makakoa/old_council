@@ -9,6 +9,7 @@ var CouncilStore = require('stores/council-store');
 
 var NavPage = require('components/nav_page');
 var Link = require('components/link');
+var NavLink = require('components/nav_link');
 var Text = require('components/text');
 var CouncilQuestion = require('./council_question');
 
@@ -56,15 +57,7 @@ module.exports = act.cl({
 
     return act.el(NavPage, {
       navOpts: {
-        rightNavIcon: act.el(Link, {
-          style: {
-            fontSize: '16px',
-            width: '15px',
-            color: 'white',
-            padding: 0,
-            margin: 0,
-            border: 'none'
-          },
+        rightNavIcon: act.el(NavLink, {
           to: 'ask',
           value: 'Ask'
         })

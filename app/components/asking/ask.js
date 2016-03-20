@@ -11,6 +11,7 @@ var QuestionActions = require('actions/question-actions');
 var NavPage = require('components/nav_page');
 var Text = require('components/text');
 var Link = require('components/link');
+var NavLink = require('components/nav_link');
 var QuestionForm = require('./question_form');
 
 var getState = QuestionStore.getQuestion;
@@ -49,12 +50,9 @@ module.exports = act.cl({
 
     return act.el(NavPage, {
       navOpts: {
-        leftNavIcon: act.el(Link, {
+        leftNavIcon: act.el(NavLink, {
           to: 'home',
-          value: 'Back',
-          style: styler({
-            color: 'white'
-          })
+          value: 'Back'
         })
       },
       content: act.el(

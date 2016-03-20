@@ -7,6 +7,7 @@ var SocketStore = require('../stores/socket-store');
 
 var NavPage = require('components/nav_page');
 var Link = require('./link');
+var NavLink = require('./nav_link');
 var Recent = require('./results/recent');
 
 function getOnlineCount() {
@@ -33,15 +34,7 @@ module.exports = act.cl({
 
     return act.el(NavPage, {
       navOpts: {
-        rightNavIcon: act.el(Link, {
-          style: {
-            fontSize: '16px',
-            width: '15px',
-            color: 'white',
-            padding: 0,
-            margin: 0,
-            border: 'none'
-          },
+        rightNavIcon: act.el(NavLink, {
           to: 'ask',
           value: 'Ask'
         })
