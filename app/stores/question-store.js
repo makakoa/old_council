@@ -5,33 +5,43 @@ var Flux = require('../Flux');
 var QuestionStore = Flux.createStore({
   storeQuestion: {},
   results: {},
+
   getQuestion: function() {
     return QuestionStore.storeQuestion;
   },
+
   getResults: function() {
     return QuestionStore.results;
   },
+
   createQuestion: function(data) {
     QuestionStore.storeQuestion = data;
   },
+
   updatePrompt: function(data) {
     QuestionStore.storeQuestion.prompt = data.value;
   },
+
   createOption: function() {
     QuestionStore.storeQuestion.options.push({option: ''});
   },
+
   updateOption: function(data) {
     QuestionStore.storeQuestion.options[data.index].option = data.value;
   },
+
   deleteOption: function(data) {
     QuestionStore.storeQuestion.options.splice(data, 1);
   },
+
   questionAsked: function(data) {
     QuestionStore.results = data;
   },
+
   questionAnswered: function(data) {
     QuestionStore.results = data;
   }
+
 }, function(payload) {
   switch (payload.actionType) {
     case 'QUESTION_CREATED':

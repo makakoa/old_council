@@ -26,6 +26,13 @@
     <icon src="assets/iphone-icon.png" platform="ios" width="120" height="120" density="mdpi" />
     <icon src="assets/icon.png" />
     <platform name="ios">
-      <splash src="assets/5C.png" width="640" height="1136"/>
+      <splash src="assets/640x1136.png" width="640" height="1136"/>
+      <splash src="assets/750x1334.png" width="750" height="1334"/>
+      <splash src="assets/828x1472.png" width="828" height="1472"/>
+      <splash src="assets/768x1024.png" width="768" height="1024"/>
+      <splash src="assets/1536x2048.png" width="1536" height="2048"/>
+      <splash src="assets/320x480.png" width="320" height="480"/>
+      <splash src="assets/640x960.png" width="640" height="960"/>
+      <splash src="assets/1242x2208.png" width="1242" height="2208"/>
     </platform>
 </widget>
