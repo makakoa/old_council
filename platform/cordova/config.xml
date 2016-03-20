@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.makakoa.TheCouncil" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>TheCouncil</name>
+<widget id="com.makakoa.TheCouncilApp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>The Council</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        Immediate answers to life's most important unimportant questions.
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-      Apache Cordova Team
+    <author email="makakoa57@gmail.content" href="http://cameronmyee.com">
+      makakoa
     </author>
     <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
@@ -23,8 +23,14 @@
       <allow-intent href="itms:*" />
       <allow-intent href="itms-apps:*" />
     </platform>
-    <icon src="assets/iphone-icon.png" platform="ios" width="120" height="120" density="mdpi" />
     <icon src="assets/icon.png" />
+    <icon src="assets/60x60.png" platform="ios" width="60" height="60" density="mdpi" />
+    <icon src="assets/120x120.png" platform="ios" width="120" height="120" density="mdpi" />
+    <icon src="assets/180x180.png" platform="ios" width="180" height="180" density="mdpi" />
+    <icon src="assets/72x72.png" platform="ios" width="72" height="72" density="mdpi" />
+    <icon src="assets/144x144.png" platform="ios" width="144" height="144" density="mdpi" />
+    <icon src="assets/76x76.png" platform="ios" width="76" height="76" density="mdpi" />
+    <icon src="assets/152x152.png" platform="ios" width="152" height="152" density="mdpi" />
     <platform name="ios">
       <splash src="assets/640x1136.png" width="640" height="1136"/>
       <splash src="assets/750x1334.png" width="750" height="1334"/>
