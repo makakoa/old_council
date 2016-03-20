@@ -16,22 +16,22 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <icon src="assets/icon.png" />
     <platform name="android">
       <allow-intent href="market:*" />
     </platform>
     <platform name="ios">
+      <preference name="BackupWebStorage" value="local"/>
       <allow-intent href="itms:*" />
       <allow-intent href="itms-apps:*" />
-    </platform>
-    <icon src="assets/icon.png" />
-    <icon src="assets/60x60.png" platform="ios" width="60" height="60" density="mdpi" />
-    <icon src="assets/120x120.png" platform="ios" width="120" height="120" density="mdpi" />
-    <icon src="assets/180x180.png" platform="ios" width="180" height="180" density="mdpi" />
-    <icon src="assets/72x72.png" platform="ios" width="72" height="72" density="mdpi" />
-    <icon src="assets/144x144.png" platform="ios" width="144" height="144" density="mdpi" />
-    <icon src="assets/76x76.png" platform="ios" width="76" height="76" density="mdpi" />
-    <icon src="assets/152x152.png" platform="ios" width="152" height="152" density="mdpi" />
-    <platform name="ios">
+      <icon src="assets/40x40.png" platform="ios" width="40" height="40" density="mdpi" />
+      <icon src="assets/60x60.png" platform="ios" width="60" height="60" density="mdpi" />
+      <icon src="assets/120x120.png" platform="ios" width="120" height="120" density="mdpi" />
+      <icon src="assets/180x180.png" platform="ios" width="180" height="180" density="mdpi" />
+      <icon src="assets/72x72.png" platform="ios" width="72" height="72" density="mdpi" />
+      <icon src="assets/144x144.png" platform="ios" width="144" height="144" density="mdpi" />
+      <icon src="assets/76x76.png" platform="ios" width="76" height="76" density="mdpi" />
+      <icon src="assets/152x152.png" platform="ios" width="152" height="152" density="mdpi" />
       <splash src="assets/640x1136.png" width="640" height="1136"/>
       <splash src="assets/750x1334.png" width="750" height="1334"/>
       <splash src="assets/828x1472.png" width="828" height="1472"/>
