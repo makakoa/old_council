@@ -7,84 +7,6 @@ var councilSize = 0;
 var openQuestions = {};
 var recent = [];
 
-
-var sampleQuestions = [{
-  start: Date.now() - 29000,
-  time: 30000,
-  prompt: 'What is life?',
-  options: [{
-    option: 'a game',
-    votes: 0
-  }, {
-    option: 'a mystery',
-    votes: 0
-  }, {
-    option: 'the matrix',
-    votes: 0
-  }],
-  total: 0,
-  _id: 'suchunique'
-}, {
-  start: Date.now() - 28000,
-  time: 30000,
-  prompt: 'How many fingers am I holding up?',
-  options: [{
-    option: 'one',
-    votes: 0
-  }, {
-    option: 'four',
-    votes: 0}, {
-      option: 'twelve',
-      votes: 0
-    }],
-  total: 0,
-  _id: 'suchunique2'
-}, {
-  start: Date.now() - 27000,
-  time: 30000,
-  prompt: 'What is The Council?',
-  options: [{
-    option: 'a game',
-    votes: 0
-  }, {
-    option: 'nothing but truth',
-    votes: 0
-  }, {
-    option: 'typical politics', votes: 0
-  }],
-  total: 0,
-  _id: 'suchunique3'
-}, {
-  start: Date.now() - 26000,
-  time: 30000,
-  prompt: 'Why is a raven like a writing desk?',
-  options: [{
-    option: 'both have the letter e', votes: 0
-  }, {
-    option: 'it\'s not', votes: 0
-  }, {
-    option: 'why not', votes: 0
-  }],
-  total: 0,
-  _id: 'suchunique4'
-}, {
-  start: Date.now() - 25000,
-  time: 30000,
-  prompt: 'What should I do?',
-  options: [{
-    option: 'ask for guidance',
-    votes: 0
-  }, {
-    option: 'join the council',
-    votes: 0
-  }, {
-    option: 'read about the council',
-    votes: 0
-  }],
-  total: 0,
-  _id: 'suchunique5'
-}];
-
 module.exports = function(io, nano) {
 
   nano.db.create('questions');
@@ -108,9 +30,7 @@ module.exports = function(io, nano) {
 
     socket.on('question:submit', function(data) {
       console.log('Socket: question submitted ' + data.prompt);
-      pollQuestion(data, function(results) {
-        io.to(socket.id).emit('question:results', results);
-      });
+      pollQuestion(data, socket.id);
     });
 
     socket.on('load:questions', function(cb) {
@@ -132,7 +52,7 @@ module.exports = function(io, nano) {
     });
   }
 
-  function pollQuestion(question) {
+  function pollQuestion(question, askerId) {
     if (question.options.length < 1) return;
 
     console.log('Question: ' + question.prompt);
@@ -140,7 +60,7 @@ module.exports = function(io, nano) {
 
     question.created = Date.now();
     setTimeout(function() {
-      report(question);
+      report(question, askerId);
     }, 30000);
 
     io.to('council').emit('question:new', question);
@@ -151,7 +71,7 @@ module.exports = function(io, nano) {
     openQuestions[v._id].options[v.index].votes++;
   }
 
-  function report(question) {
+  function report(question, askerId) {
     console.log('Socket: reporting question');
 
     if (question.total < 1) {
@@ -167,6 +87,7 @@ module.exports = function(io, nano) {
     _.map(_.rest(question.options), function(o) {
       o.result = 'lost';
     });
+    io.to(askerId).emit('question:results', question);
 
     questionStore.insert(question, function() {
       getQuestions(function(qs) {

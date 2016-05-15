@@ -5,7 +5,12 @@ Dev:
 ```
 make run-dev
 ```
-Api:
+```
+db:
+```
+couchdb
+```
+API:
 ```
 make serve
 ```
