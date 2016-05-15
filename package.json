@@ -23,12 +23,14 @@
     "jscs": "^2.11.0",
     "jscs-loader": "^0.2.0",
     "jshint": "^2.9.1",
-    "jshint-loader": "^0.8.3"
+    "jshint-loader": "^0.8.3",
+    "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
     "express": "^4.12.1",
     "fastclick": "^1.0.6",
     "jsx-loader": "^0.12.2",
+    "lodash": "^4.6.1",
     "mcfly": "0.0.10",
     "nano": "^6.2.0",
     "radium": "^0.9.1",

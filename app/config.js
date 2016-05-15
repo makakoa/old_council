@@ -5,7 +5,7 @@ console.log('Env: ', env);
 
 module.exports = {
   dev: {
-    apiUrl: 'http://cams-mac.local:3000'
+    apiUrl: 'http://localhost:3000'
   },
   production: {
     apiUrl: 'https://thecouncil.herokuapp.com'
