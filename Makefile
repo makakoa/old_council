@@ -25,6 +25,10 @@ quick-ios:
 migrate:
 	node api/db/migrate run
 
+.PHONY: check-migrations
+check-migrations:
+	node api/db/migrate check
+
 .PHONY: db-fresh
 db-fresh:
 	./api/db/fresh

@@ -6,7 +6,7 @@ var _ = require('lodash'),
     Promise = require('bluebird');
 
 var db = require('../../db')({
-  url: 'postgres://flybox:1234@localhost:5432/flybox',
+  url: 'postgres://council:1234@localhost:5432/council',
   poolSize: 10,
   enableStore: true,
   debug: true
@@ -28,6 +28,27 @@ function loadMigrations(migrator, dir) {
 }
 
 var commands = {
+  check: function() {
+    return loadMigrations(migrator, __dirname + '/migrations')
+      .then(function() {
+        return migrator.getStatus('migration')
+          .then(_.spread(function(migrations, hasPending, hasMissing) {
+            console.log();
+            if (hasMissing) console.log('MISSING MIGRATIONS');
+            if (hasPending) console.log('PENDING MIGRATIONS');
+            console.log();
+            _.each(migrations, function(migration) {
+              var status = migration.isCommitted
+                    ? 'Committed'
+                    : migration.candidateStatus === 'MISSING'
+                    ? 'Missed'
+                    : 'Pending';
+              console.log(migration.date, status, migration.description);
+            });
+          }));
+      });
+  },
+
   run: function() {
     console.log('Running migrations');
     return loadMigrations(migrator, __dirname + '/migrations')
