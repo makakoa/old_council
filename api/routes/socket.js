@@ -90,7 +90,7 @@ module.exports = function(io, questionStore) {
     console.log(question);
     io.to(askerId).emit('question:results', question);
 
-    questionStore.insert(question, function() {
+    questionStore.insert(question).then(function() {
       getQuestions(function(qs) {
         io.emit('update:recent', qs);
       });
@@ -100,9 +100,7 @@ module.exports = function(io, questionStore) {
 
 
   function getQuestions(cb) {
-    questionStore.find({}).then(cb).tap(function(qs) {
-      console.log("QUESTIONS", qs);
-    });
+    questionStore.find({}).then(cb);
   }
 
   return initSocket;

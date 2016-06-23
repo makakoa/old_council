@@ -9,5 +9,5 @@ CREATE TABLE question.question (
   {{col.timestamps}},
   {{col.id}},
   prompt text NOT NULL,
-  details json
+  __bag json
 );
