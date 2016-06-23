@@ -5,15 +5,23 @@ if (debug) console.log('-Running dev build-');
 var webpack = require('webpack');
 
 module.exports = {
+  devServer: {
+    contentBase: 'public',
+    hot: true
+  },
   context: __dirname,
   node: {
     process: true
   },
   devtool: debug ? 'inline-sourcemap' : null,
-  entry: './app/app.js',
+  entry: debug ? [
+    './app/app.js',
+    'webpack/hot/dev-server',
+    'webpack-dev-server/client?http://localhost:8080'
+  ] : './app/app.js',
   output: {
     path: './public',
-    publicPath: 'public/',
+    publicPath: '/',
     filename: 'scripts.min.js'
   },
   module: {
@@ -38,7 +46,9 @@ module.exports = {
       'app'
     ]
   },
-  plugins: debug ? [] : [
+  plugins: debug ? [
+    new webpack.HotModuleReplacementPlugin()
+  ] : [
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': '"production"'

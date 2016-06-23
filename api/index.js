@@ -8,6 +8,8 @@ var express = require('express'),
       debug: true
     });
 
+var questionStore = db.store('question.question');
+
 var app = express();
 var port = process.env.PORT || 3000;
 
@@ -16,7 +18,7 @@ app.use(express.static(__dirname + '/../public'));
 //socket io
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
-var socketHandler = require('./routes/socket')(io, db);
+var socketHandler = require('./routes/socket')(io, questionStore);
 io.sockets.on('connection', socketHandler);
 
 server.listen(port, function() {

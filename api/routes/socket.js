@@ -100,7 +100,9 @@ module.exports = function(io, questionStore) {
 
 
   function getQuestions(cb) {
-    questionStore.find({}).then(cb);
+    questionStore.find({}).then(cb).tap(function(qs) {
+      console.log("QUESTIONS", qs);
+    });
   }
 
   return initSocket;
