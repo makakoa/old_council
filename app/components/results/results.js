@@ -78,6 +78,11 @@ module.exports = act.cl({
       status = this.state.prompt;
     }
 
+
+
+    console.log('this.state:' , this.state);
+    // console.log('options:' , options);
+
     return act.el(NavPage, {
       navOpts: {},
       content: act.el(
@@ -120,7 +125,8 @@ module.exports = act.cl({
         act.el(Result, {
           prompt: status,
           votes: this.state.votes,
-          options: this.state.options
+          options: this.state.options,
+          total: this.state.total
         }),
 
         act.el(Link, {

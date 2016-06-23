@@ -33,7 +33,8 @@ module.exports = act.cl({
       key: index,
       votes: fields.votes,
       options: fields.options,
-      prompt: fields.prompt
+      prompt: fields.prompt,
+      total: fields.total
     });
   },
 

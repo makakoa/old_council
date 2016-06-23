@@ -34,16 +34,17 @@ module.exports = act.cl({
       act.el(Text, {
         value: fields.option
       }),
-      this.props.votes
-        ? act.el(Text, {
-          value: this.props.votes[index] + ' votes',
+      this.props.options[index].votes
+        ?
+          act.el(Text, {
+          value: (Math.floor((this.props.options[index].votes / this.props.total)*10000)/100) + '% votes',
           style: {
             fontFamily: 'Oxygen',
             lineHeight: '20px',
             color: 'gray'
           }
         })
-      : ''
+      : 'council say no'
     );
   },
 
@@ -52,6 +53,8 @@ module.exports = act.cl({
     var options = [];
     if (this.props.options) options = this.props.options;
     var optionsResults = _.map(options, this.buildResults);
+
+    console.log('PROPS:', this.props);
 
     return act.el(
       'result',
