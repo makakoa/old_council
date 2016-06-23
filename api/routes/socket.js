@@ -100,7 +100,11 @@ module.exports = function(io, questionStore) {
 
 
   function getQuestions(cb) {
-    questionStore.find({}).then(cb);
+    questionStore.find({}).then(function(qs) {
+      return _.map(qs, function(q) {
+        return _.extend(_.omit(q, '__bag'), q.__bag); // reformat
+      });
+    }).then(cb);
   }
 
   return initSocket;
