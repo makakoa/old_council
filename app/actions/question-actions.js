@@ -44,19 +44,20 @@ var QuestionActions = Flux.createActions({
   },
   askQuestion: function(data) {
     //Todo: remove
-    var n = 0;
-    var vs = [];
-    var nums = _.map(data.options, function() {
-      n += Math.floor(Math.random() * 3);
-      return n;
-    });
-    n = Math.min(n, 4);
-    _.each(nums, function(t) {
-      t = Math.floor((t / n) * (30 / n));
-      vs.push(t);
-    });
-    data.votes = vs.reverse();
-    data.votes[0] += 1;
+
+    // var n = 0;
+    // var vs = [];
+    // var nums = _.map(data.options, function() {
+    //   n += Math.floor(Math.random() * 3);
+    //   return n;
+    // });
+    // n = Math.min(n, 4);
+    // _.each(nums, function(t) {
+    //   t = Math.floor((t / n) * (30 / n));
+    //   vs.push(t);
+    // });
+
+
 
     socket.emit('question:submit', data);
     return {

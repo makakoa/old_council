@@ -5,7 +5,7 @@ var _ = require('lodash');
 var userCount = 0;
 var councilSize = 0;
 var openQuestions = {};
-var recent = [];
+// var recent = [];
 
 module.exports = function(io, nano) {
 
@@ -56,6 +56,10 @@ module.exports = function(io, nano) {
     if (question.options.length < 1) return;
 
     console.log('Question: ' + question.prompt);
+    question.options.map(function(o){
+      o.votes = 0;
+    });
+    question.total = 0;
     openQuestions[question._id] = question;
 
     question.created = Date.now();
@@ -73,20 +77,21 @@ module.exports = function(io, nano) {
 
   function report(question, askerId) {
     console.log('Socket: reporting question');
+    // if (question.total < 1) {
+    //   var coinFlip = Math.floor(Math.random() * question.options.length);
+    //   question.options[coinFlip].votes++;
+    // }
 
-    if (question.total < 1) {
-      var coinFlip = Math.floor(Math.random() * question.options.length);
-      question.options[coinFlip].votes++;
-    }
 
     //reformat to result
     question.options = question.options.sort(function(a, b) {
       return b.votes - a.votes;
     });
-    _.first(question.options).result = 'won';
-    _.map(_.rest(question.options), function(o) {
+    _.map(question.options, function(o) {
       o.result = 'lost';
     });
+    _.first(question.options).result = 'won';
+    console.log(question);
     io.to(askerId).emit('question:results', question);
 
     questionStore.insert(question, function() {
@@ -107,7 +112,7 @@ module.exports = function(io, nano) {
 
       function checkComplete() {
         if (complete === body.rows.length) {
-          console.log("ALL QUESTIONS", questions);
+          // console.log("ALL QUESTIONS", questions);
           cb(questions);
         }
       }
