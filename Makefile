@@ -4,7 +4,7 @@ run-dev:
 
 .PHONY: serve
 serve:
-	node server/server.js
+	node api
 
 .PHONY: serve-production
 serve-production:

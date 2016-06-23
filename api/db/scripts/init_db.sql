@@ -1,0 +1,5 @@
+DROP DATABASE IF EXISTS :dbname;
+DROP ROLE IF EXISTS :owner;
+CREATE ROLE :owner WITH LOGIN PASSWORD :password;
+CREATE DATABASE :dbname OWNER :owner;
+ALTER DATABASE :dbname SET timezone = 'UTC';

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+psql postgres -f scripts/init_db.sql -v dbname=council -v owner=council -v password=\'1234\'

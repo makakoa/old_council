@@ -5,12 +5,8 @@ var _ = require('lodash');
 var userCount = 0;
 var councilSize = 0;
 var openQuestions = {};
-// var recent = [];
 
-module.exports = function(io, nano) {
-
-  nano.db.create('questions');
-  var questionStore = nano.db.use('questions');
+module.exports = function(io, questionStore) {
 
   function initSocket(socket) {
     userCount++;
@@ -20,7 +16,7 @@ module.exports = function(io, nano) {
     });
 
     console.log('Socket: connect, Online ' + userCount);
-    io.emit('online', userCount);
+    // io.emit('online', userCount);
 
     socket.on('disconnect', function() {
       userCount--;
@@ -56,7 +52,7 @@ module.exports = function(io, nano) {
     if (question.options.length < 1) return;
 
     console.log('Question: ' + question.prompt);
-    question.options.map(function(o){
+    question.options.map(function(o) {
       o.votes = 0;
     });
     question.total = 0;
@@ -77,10 +73,10 @@ module.exports = function(io, nano) {
 
   function report(question, askerId) {
     console.log('Socket: reporting question');
-    // if (question.total < 1) {
-    //   var coinFlip = Math.floor(Math.random() * question.options.length);
-    //   question.options[coinFlip].votes++;
-    // }
+    if (question.total < 1) {
+      var coinFlip = Math.floor(Math.random() * question.options.length);
+      question.options[coinFlip].votes++;
+    }
 
 
     //reformat to result
@@ -104,28 +100,7 @@ module.exports = function(io, nano) {
 
 
   function getQuestions(cb) {
-    var questions = [];
-    var complete = 0;
-
-    questionStore.list(function(err, body) {
-      if (err) return;
-
-      function checkComplete() {
-        if (complete === body.rows.length) {
-          // console.log("ALL QUESTIONS", questions);
-          cb(questions);
-        }
-      }
-
-      _.map(body.rows, function(q) {
-        questionStore.get(q.id, function(err, body) {
-          if (err) return;
-          questions.push(body);
-          complete++;
-          checkComplete();
-        });
-      });
-    });
+    questionStore.find({}).then(cb);
   }
 
   return initSocket;
