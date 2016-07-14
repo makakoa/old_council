@@ -80,7 +80,7 @@ module.exports = act.cl({
 
 
 
-    console.log('this.state:' , this.state);
+    // console.log('this.state:' , this.state);
     // console.log('options:' , options);
 
     return act.el(NavPage, {
